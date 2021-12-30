@@ -8,7 +8,6 @@ import { fetchUser } from '../redux/actions/index'
 import { Profile } from './main/Profile'
 import { createBottonTabNavigator} from '@react-navigation/bottom-tabs';
 
-const Tab = createBottonTabNavigator();
 
 export class Main extends Component {
     componentDidMount(){
@@ -23,10 +22,8 @@ export class Main extends Component {
             )
         }
         return(
-            <Tab.Navigator>
-                <Tab.Screen name="Profile" component={Profile} />
-                
-            </Tab.Navigator>
+            <View>{currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}</View>
+            
         )
     }
 }
