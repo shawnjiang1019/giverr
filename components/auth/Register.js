@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
-import { View, Button, TextInput } from 'react-native'
+import { View } from 'react-native'
 
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import { Text } from 'react-native-paper'
+import Background from '../components/Background'
+import Logo from '../components/Logo'
+import Header from '../components/Header'
+import TextInput from '../components/TextInput'
+import BackButton from '../components/BackButton'
+import { theme } from '../core/theme'
+import Button from '../components/Button'
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 
@@ -35,7 +44,9 @@ export class Register extends Component {
 
     render() {
         return (
-            <View>
+            <Background>
+                <Logo />
+                <Header>Create Account</Header>
                 <TextInput
                     placeholder="name"
                     onChangeText={(name) => this.setState({ name })}
@@ -53,8 +64,9 @@ export class Register extends Component {
                 <Button
                     onPress={() => this.onSignUp()}
                     title="Sign Up"
-                />
-            </View>
+                    mode="contained"
+                > Register </Button>
+            </Background>
         )
     }
 }

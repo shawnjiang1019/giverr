@@ -99,6 +99,8 @@ export class App extends Component {
         <NavigationContainer>
           <Stack.Navigator initialRouteName = "Landing">
             <Stack.Screen name = "Main" component = {MainScreen} options = {{ headerShown: true}}/>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={RegisterScreen} />
             
           </Stack.Navigator>
         </NavigationContainer>

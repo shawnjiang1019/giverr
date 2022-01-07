@@ -1,5 +1,32 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
+import Background2 from './components/Background2'
+import Swipe from "../components/components/Swipe"
+import TopBar from "./components/TopBar"
+
+
+export class Main extends Component {
+    render() {
+        
+        return(
+            <Background2>
+                <TopBar />
+                <Swipe />
+            </Background2>
+            
+        )
+    }
+}
+
+
+export default (Main);
+
+
+
+
+
+/*import React, { Component } from 'react'
+import { View, Text } from 'react-native'
 
 
 import { connect } from 'react-redux'
@@ -32,4 +59,7 @@ const mapStateToProps = (store) => ({
 })
 const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
 
-export default connect(mapStateToProps, mapDispatchProps)(Main);
+export default connect(mapStateToProps, mapDispatchProps)(Main); */
+
+
+  
