@@ -12,7 +12,7 @@ export default function Background({ children }) {
 
 const styles = StyleSheet.create({
   background: {
-
+    backgroundColor: "#00314D"
   },
   container: {
 

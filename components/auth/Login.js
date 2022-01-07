@@ -92,7 +92,7 @@ export default Login
 const styles = StyleSheet.create({
     background: {
   
-      backgroundColor: 'grey'
+      backgroundColor: '#00314D'
     },
     forgotPassword: {
       width: '100%',
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     row: {
       flexDirection: 'row',
       marginTop: 4,
+      textColor: 'orange'
     },
     forgot: {
       fontSize: 13,

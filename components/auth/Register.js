@@ -66,9 +66,28 @@ export class Register extends Component {
                     title="Sign Up"
                     mode="contained"
                 > Register </Button>
+                <View style={styles.row}>
+                    <Text>Already have an account? </Text>
+                    <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
+                        <Text style={styles.link}>Login</Text>
+                    </TouchableOpacity>
+                </View>
             </Background>
         )
     }
 }
 
 export default Register
+
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    marginTop: 4,
+  },
+
+  link: {
+    fontWeight: 'bold',
+    color: theme.colors.primary,
+  },
+})

@@ -47,10 +47,11 @@ export default function Landing({ navigation }) {
 const styles = StyleSheet.create({
   background: {
 
-    backgroundColor: 'grey'
+    backgroundColor: '#00314D'
   },
   text: {
     fontWeight: 'bold',
+    color: '#FF914D'
   },
 })
 
