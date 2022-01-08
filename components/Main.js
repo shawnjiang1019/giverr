@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+/*import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import Background2 from './components/Background2'
 import Swipe from "../components/components/Swipe"
@@ -22,10 +22,10 @@ export class Main extends Component {
 export default (Main);
 
 
+*/
 
 
-
-/*import React, { Component } from 'react'
+import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 
 
@@ -34,6 +34,8 @@ import { bindActionCreators } from 'redux'
 import { fetchUser } from '../redux/actions/index'
 import { Profile } from './main/Profile'
 import { createBottonTabNavigator} from '@react-navigation/bottom-tabs';
+import firebase from 'firebase/compat/app'
+import "firebase/firestore";
 
 
 export class Main extends Component {
@@ -49,7 +51,12 @@ export class Main extends Component {
             )
         }
         return(
-            <View>{currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}</View>
+            <View>
+                {currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}
+                <button onClick={() => firebase.auth()
+                    .signOut()
+                    .then(() => console.log('User signed out!'))}>Sign out</button>
+            </View>
             
         )
     }
@@ -59,7 +66,6 @@ const mapStateToProps = (store) => ({
 })
 const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
 
-export default connect(mapStateToProps, mapDispatchProps)(Main); */
-
+export default connect(mapStateToProps, mapDispatchProps)(Main); 
 
   
