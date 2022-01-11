@@ -12,6 +12,20 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+
+
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={MainScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+
+    </Tab.Navigator>
+  );
+}
 const store = createStore(rootReducer, applyMiddleware(thunk))
 // Import the functions you need from the SDKs you need
 
@@ -43,10 +57,11 @@ import LandingScreen from './components/auth/Landing'
 import RegisterScreen from './components/auth/Register'
 import LoginScreen from './components/auth/Login';
 import { Component } from 'react/cjs/react.production.min';
-import MainScreen from './components/Main'
+import MainScreen, { Main } from './components/Main'
+import ProfileScreen, {Profile} from './components/main/Profile';
 
 const Stack = createStackNavigator();
-
+const Tab = createBottomTabNavigator();
 export class App extends Component {
   constructor(props){
     super(props);
@@ -84,9 +99,9 @@ export class App extends Component {
       return (
         <NavigationContainer>
           <Stack.Navigator initialRouteName = "Landing">
-            <Stack.Screen name = "Landing" component = {LandingScreen} options = {{ headerShown: true}}/>
-            <Stack.Screen name = "Register" component = {RegisterScreen}/>
-            <Stack.Screen name = "Login" component = {LoginScreen}/>
+            <Stack.Screen name = "Landing" component = {LandingScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "Register" component = {RegisterScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "Login" component = {LoginScreen} options = {{ headerShown: false}}/>
           </Stack.Navigator>
         </NavigationContainer>
         
@@ -96,15 +111,12 @@ export class App extends Component {
 
     return(
       <Provider store={store}>
+        
         <NavigationContainer>
-          <Stack.Navigator initialRouteName = "Landing">
-            <Stack.Screen name = "Main" component = {MainScreen} options = {{ headerShown: true}}/>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-            
-          </Stack.Navigator>
+          <MyTabs />
         </NavigationContainer>
       </Provider>
+        
       
         
       )

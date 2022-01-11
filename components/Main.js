@@ -28,6 +28,7 @@ export default (Main);
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -36,7 +37,10 @@ import { Profile } from './main/Profile'
 import { createBottonTabNavigator} from '@react-navigation/bottom-tabs';
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
+import Button from './components/Button'
 
+
+const Tab = createBottomTabNavigator();
 
 export class Main extends Component {
     componentDidMount(){
@@ -53,9 +57,7 @@ export class Main extends Component {
         return(
             <View>
                 {currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}
-                <button onClick={() => firebase.auth()
-                    .signOut()
-                    .then(() => console.log('User signed out!'))}>Sign out</button>
+                <Button onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained">Sign out</Button>
             </View>
             
         )

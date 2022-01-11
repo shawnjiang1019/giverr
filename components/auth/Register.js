@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { Text } from 'react-native-paper'
 import Background from '../components/Background'
@@ -67,7 +68,7 @@ export class Register extends Component {
                     mode="contained"
                 > Register </Button>
                 <View style={styles.row}>
-                    <Text>Already have an account? </Text>
+                    <Text style = {styles.whiteText}>Already have an account? </Text>
                     <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
                         <Text style={styles.link}>Login</Text>
                     </TouchableOpacity>
@@ -90,4 +91,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: theme.colors.primary,
   },
+
+  whiteText: {
+      color: 'white'
+  }
 })
