@@ -8,30 +8,39 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { fetchUser } from '../redux/actions/index'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import firebase from 'firebase/compat/app'
+import "firebase/firestore";
 
 
 
 
 
-export default class Profile extends Component {
+
+export class Profile extends Component {
+  componentDidMount(){
+    this.props.fetchUser();
+  }
 
   render() {
+    const { currentUser } = this.props;
+    
     return (
       <View style={styles.container}>
           <View style={styles.header}></View>
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>John Doe</Text>
+              <Text style={styles.name}>{currentUser.name}</Text>
               <Text style={styles.info}>UX Designer / Mobile developer</Text>
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
               
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Opcion 1</Text>  
+                <Text>Edit</Text>  
               </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Opcion 2</Text> 
+              <TouchableOpacity style={styles.buttonContainer} onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained">
+                <Text>Sign Out</Text> 
               </TouchableOpacity>
             </View>
         </View>
@@ -39,10 +48,17 @@ export default class Profile extends Component {
     );
   }
 }
+const mapStateToProps = (store) => ({
+  currentUser: store.userState.currentUser
+})
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchProps)(Profile); 
+
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#00BFFF",
+    backgroundColor: "#00314D",
     height:200,
   },
   avatar: {
@@ -94,6 +110,6 @@ const styles = StyleSheet.create({
     marginBottom:20,
     width:250,
     borderRadius:30,
-    backgroundColor: "#00BFFF",
+    backgroundColor: "#00314D",
   },
 });

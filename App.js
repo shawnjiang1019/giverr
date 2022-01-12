@@ -58,7 +58,7 @@ import RegisterScreen from './components/auth/Register'
 import LoginScreen from './components/auth/Login';
 import { Component } from 'react/cjs/react.production.min';
 import MainScreen, { Main } from './components/Main'
-import ProfileScreen, {Profile} from './components/main/Profile';
+import ProfileScreen, {Profile} from './components/Profile';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

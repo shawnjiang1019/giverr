@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     },
     forgotPassword: {
       width: '100%',
-      alignItems: 'flex-end',
+      textAlign: 'center',
       marginBottom: 24,
     },
     row: {
