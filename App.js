@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+/*import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -127,3 +127,27 @@ export class App extends Component {
 export default App
 
 
+*/
+
+import 'react-native-gesture-handler';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
+import Home from './containers/Home';
+
+const App = () => {
+  return (
+    <View style={styles.pageContainer}>
+      <Home />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  pageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+});
+
+export default App;
