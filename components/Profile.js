@@ -33,7 +33,7 @@ export class Profile extends Component {
             location: '',
         }
 
-        this.onSignUp = this.onSignUp.bind(this)
+    
     }
   componentDidMount(){
     this.props.fetchUser();
