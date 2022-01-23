@@ -21,7 +21,8 @@ export class Register extends Component {
         this.state = {
             email: '',
             password: '',
-            name: ''
+            name: '',
+            location: '',
         }
 
         this.onSignUp = this.onSignUp.bind(this)
@@ -41,6 +42,7 @@ export class Register extends Component {
         .catch((error) => {
             console.log(error)
         })
+        
     }
 
     render() {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -16,17 +17,36 @@ import "firebase/firestore";
 
 
 
+const update = {
+  location: 'Canada'
+};
 
 
 export class Profile extends Component {
+  constructor(props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            password: '',
+            name: '',
+            location: '',
+        }
+
+        this.onSignUp = this.onSignUp.bind(this)
+    }
   componentDidMount(){
     this.props.fetchUser();
   }
+  
 
+
+  
   render() {
     const { currentUser } = this.props;
     
     return (
+      
       <View style={styles.container}>
           <View style={styles.header}></View>
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
@@ -35,13 +55,22 @@ export class Profile extends Component {
               <Text style={styles.name}>{currentUser.name}</Text>
               <Text style={styles.info}>UX Designer / Mobile developer</Text>
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
+              <Text style={styles.name}>Location: {currentUser.location}</Text>
               
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Edit</Text>  
-              </TouchableOpacity>              
+              <TextInput
+                    placeholder="password"
+                    secureTextEntry={true}
+                    onChangeText={(password) => this.setState({ password })}
+                />
+              
               <TouchableOpacity style={styles.buttonContainer} onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained">
                 <Text>Sign Out</Text> 
               </TouchableOpacity>
+              <TouchableOpacity style = {styles.buttonContainer} onPress = {() => firebase.auth().currentUser.updateProfile(update)} title="SignOut" mode="contained">
+                <Text>Update location</Text>
+              </TouchableOpacity>
+              
+              
             </View>
         </View>
       </View>

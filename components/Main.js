@@ -57,7 +57,7 @@ export class Main extends Component {
         }
         return(
             <View>
-                {currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}
+                {currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}, location: {currentUser.location}
                 <Button onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained">Sign out</Button>
                 <Swipe/>
             </View>
