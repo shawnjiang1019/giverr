@@ -17,9 +17,7 @@ import "firebase/firestore";
 
 
 
-const update = {
-  location: 'Canada'
-};
+
 
 
 export class Profile extends Component {
@@ -30,7 +28,6 @@ export class Profile extends Component {
             email: '',
             password: '',
             name: '',
-            location: '',
         }
 
     
@@ -57,18 +54,12 @@ export class Profile extends Component {
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
               <Text style={styles.name}>Location: {currentUser.location}</Text>
               
-              <TextInput
-                    placeholder="password"
-                    secureTextEntry={true}
-                    onChangeText={(password) => this.setState({ password })}
-                />
+
               
               <TouchableOpacity style={styles.buttonContainer} onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained">
                 <Text>Sign Out</Text> 
               </TouchableOpacity>
-              <TouchableOpacity style = {styles.buttonContainer} onPress = {() => firebase.auth().currentUser.updateProfile(update)} title="SignOut" mode="contained">
-                <Text>Update location</Text>
-              </TouchableOpacity>
+
               
               
             </View>

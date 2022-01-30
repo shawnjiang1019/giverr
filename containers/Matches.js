@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import styles from '../assets/styles';
 
@@ -52,3 +53,5 @@ const Matches = () => {
 };
 
 export default Matches;
+
+*/

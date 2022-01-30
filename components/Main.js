@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+/*import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 
 import TopBar from "./components/TopBar"
@@ -19,7 +19,7 @@ export class Main extends Component {
 export default (Main);
 
 
-/*
+*/
 
 
 import React, { Component } from 'react'
@@ -69,4 +69,3 @@ const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchProps)(Main); 
 
-  */

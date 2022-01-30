@@ -13,6 +13,11 @@ import { theme } from '../core/theme'
 import Button from '../components/Button'
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
+import DropDownPicker from 'react-native-dropdown-picker';
+
+
+
+
 
 export class Register extends Component {
     constructor(props) {
@@ -23,19 +28,26 @@ export class Register extends Component {
             password: '',
             name: '',
             location: '',
+            interests: [],
+
+            
+            
         }
 
         this.onSignUp = this.onSignUp.bind(this)
     }
 
+
     onSignUp() {
-        const { email, password, name } = this.state;
+        const { email, password, name, location, interests } = this.state;
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((result) =>{
             firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).set({
                 name,
                 email,
                 password,
+                location,
+                interests
             })
             console.log(result)
         })        
@@ -44,6 +56,9 @@ export class Register extends Component {
         })
         
     }
+
+
+    
 
     render() {
         return (
@@ -63,6 +78,32 @@ export class Register extends Component {
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({ password })}
                 />
+
+                <TextInput
+                    placeholder="Location"
+                    onChangeText={(location) => this.setState({ location })}
+                />
+                <TextInput
+                    placeholder="Interests"
+                    onChangeText={(interests) => this.setState({ interests })}
+                />
+
+<DropDownPicker
+          items={[
+              {label: 'English', value: 'en'},
+              {label: 'Deutsch', value: 'de'},
+              {label: 'French', value: 'fr'},
+          ]}
+          defaultIndex={0}
+          
+          onChangeItem={item => console.log(item.label, item.value)}
+      />
+
+
+                
+
+
+                
 
                 <Button
                     onPress={() => this.onSignUp()}
