@@ -7,14 +7,14 @@ import { getApps, initializeApp } from "firebase/app";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-import 'firebase/compat/analytics';
+
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-
+import { registerRootComponent } from 'expo';
 
 
 function MyTabs() {
@@ -29,7 +29,7 @@ function MyTabs() {
 const store = createStore(rootReducer, applyMiddleware(thunk))
 // Import the functions you need from the SDKs you need
 
-import { getAnalytics } from "firebase/analytics";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -123,6 +123,7 @@ export class App extends Component {
     
   }
 }
+registerRootComponent(App);
 
 export default App
 

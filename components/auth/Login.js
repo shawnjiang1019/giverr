@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     row: {
       flexDirection: 'row',
       marginTop: 4,
-      textColor: 'orange'
+      //textColor: 'orange'
     },
     forgot: {
       fontSize: 13,

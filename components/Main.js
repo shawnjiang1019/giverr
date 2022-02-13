@@ -48,13 +48,13 @@ export class Main extends Component {
         console.log(currentUser)
         if(currentUser == undefined){
             return(
-                <View>Something went wrong
+                <View><Text>Something went wrong</Text>
                 </View>
             )
         }
         return(
             <View>
-                {currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}, location: {currentUser.location}
+                <Text>{currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}, location: {currentUser.location}</Text>
                 <Button onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained">Sign out</Button>
                 <Swipe/>
             </View>
