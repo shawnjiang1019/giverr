@@ -28,7 +28,7 @@ export class Register extends Component {
             password: '',
             name: '',
             location: '',
-            interests: [],
+            
 
             
             
@@ -47,7 +47,7 @@ export class Register extends Component {
                 email,
                 password,
                 location,
-                interests
+                
             })
             console.log(result)
         })        
@@ -83,21 +83,7 @@ export class Register extends Component {
                     placeholder="Location"
                     onChangeText={(location) => this.setState({ location })}
                 />
-                <TextInput
-                    placeholder="Interests"
-                    onChangeText={(interests) => this.setState({ interests })}
-                />
 
-<DropDownPicker
-          items={[
-              {label: 'English', value: 'en'},
-              {label: 'Deutsch', value: 'de'},
-              {label: 'French', value: 'fr'},
-          ]}
-          defaultIndex={0}
-          
-          onChangeItem={item => console.log(item.label, item.value)}
-      />
 
 
                 
