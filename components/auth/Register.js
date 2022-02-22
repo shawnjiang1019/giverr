@@ -14,12 +14,6 @@ import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 
 export class Register extends Component {
-//DropDown
-    state = {user: ''}
-   updateUser = (user) => {
-      this.setState({ user: user })
-   }
-//DropDown
     constructor(props) {
         super(props);
 
@@ -27,7 +21,6 @@ export class Register extends Component {
             email: '',
             password: '',
             name: '',
-            user: ''
         }
 
         this.onSignUp = this.onSignUp.bind(this)

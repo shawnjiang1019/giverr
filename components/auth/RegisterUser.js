@@ -13,7 +13,7 @@ import Button from '../components/Button'
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 
-export class Register extends Component {
+export class RegisterUser extends Component {
     constructor(props) {
         super(props);
 
@@ -83,7 +83,7 @@ export class Register extends Component {
     }
 }
 
-export default Register
+export default RegisterUser
 
 
 const styles = StyleSheet.create({
