@@ -5,7 +5,7 @@ import Button from '../components/Button'
 import TextInput from '../components/TextInput'
 import Logo from '../components/Logo'
 import Header from '../components/Header'
-import Register from "./Register"
+import RegisterScreen from "./Register"
 
 import { TouchableOpacity, StyleSheet } from 'react-native'
 import { Text } from 'react-native-paper'

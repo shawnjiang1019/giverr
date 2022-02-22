@@ -43,16 +43,17 @@ export class Register extends Component {
     }
 
     render() {
+        
         return (
             <Background>
                 <Logo />
                 <Header>Create Account</Header>
-                <Button title="RegisterUser" mode="contained"
-                onPress={() => navigation.navigate("RegisterUser")}> 
+                <Button title="Login" mode="contained"
+                onPress={() => navigation.navigate("RegisterOrg")}>
                 Register As A User </Button>
                 <br/>
                 <Button title="RegisterOrg" mode="contained"
-                onPress={() => navigation.navigate("RegisterOrg")}>
+                onclick="window.location='http://www.website.com';">
                 Register An Organization </Button>
 
                 <View style={styles.row}>
@@ -63,6 +64,7 @@ export class Register extends Component {
                 </View>
             </Background>
         )
+        
     }
 }
 

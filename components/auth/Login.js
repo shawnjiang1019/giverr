@@ -5,7 +5,7 @@ import Button from '../components/Button'
 import TextInput from '../components/TextInput'
 import Logo from '../components/Logo'
 import Header from '../components/Header'
-import Register from "./Register"
+import RegisterScreen from "./Register"
 
 import { TouchableOpacity, StyleSheet } from 'react-native'
 import { Text } from 'react-native-paper'
@@ -50,18 +50,24 @@ export class Login extends Component {
                 <Logo />
 
                 <Header>Welcome </Header>
+                <TextInput
+                    placeholder="email"
+                    onChangeText={(email) => this.setState({ email })}
+                />
+                <TextInput
+                    placeholder="password"
+                    secureTextEntry={true}
+                    onChangeText={(password) => this.setState({ password })}
+                />
+                <View style={styles.forgotPassword}>
+                    <TouchableOpacity onPress={() => navigation.navigate('ResetPasswordScreen')}>
                 
-                <Button
-                    onPress={() => this.onSignUp()}
-                    title="Login"
-                    mode="contained"
-                > Login As A User </Button>
-                <br/>
-                <Button
-                    onPress={() => this.onSignUp()}
-                    title="Login"
-                    mode="contained"
-                > Login As An Organization </Button>
+                        <Text style={styles.forgot}>Forgot your password?</Text>
+
+                    </TouchableOpacity>
+                </View>
+
+                <Button onPress={() => this.onSignUp()} title="Login" mode="contained"> Login </Button>
 
                 <View style={styles.row}>
 

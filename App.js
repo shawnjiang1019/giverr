@@ -7,15 +7,33 @@ import { getApps, initializeApp } from "firebase/app";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-import 'firebase/compat/analytics';
+import ProfileScreen from './components/main/Profile'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ActivityScreen from './components/screens/Activity'
+import SearchScreen from './components/Search'
+
+import { registerRootComponent } from 'expo';
+
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={MainScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="Activity" component={ActivityScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+
+    </Tab.Navigator>
+  );
+}
 const store = createStore(rootReducer, applyMiddleware(thunk))
 // Import the functions you need from the SDKs you need
 
-import { getAnalytics } from "firebase/analytics";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -41,14 +59,13 @@ if (firebase.apps.length === 0){
 
 import LandingScreen from './components/auth/Landing'
 import RegisterScreen from './components/auth/Register'
+import RegisterOrg from './components/auth/RegisterOrg'
 import LoginScreen from './components/auth/Login';
 import { Component } from 'react/cjs/react.production.min';
-import MainScreen from './components/Main'
-import RegisterUser from './components/auth/RegisterUser'
-import RegisterOrg from './components/auth/RegisterOrg'
+import MainScreen, { Main } from './components/Main'
 
 const Stack = createStackNavigator();
-
+const Tab = createBottomTabNavigator();
 export class App extends Component {
   constructor(props){
     super(props);
@@ -86,11 +103,13 @@ export class App extends Component {
       return (
         <NavigationContainer>
           <Stack.Navigator initialRouteName = "Landing">
-            <Stack.Screen name = "Landing" component = {LandingScreen} options = {{ headerShown: true}}/>
-            <Stack.Screen name = "Register" component = {RegisterScreen}/>
-            <Stack.Screen name = "Login" component = {LoginScreen}/>
-            <Stack.Screen name = "RegisterUser" component = {RegisterUser}/>
-            <Stack.Screen name = "RegisterOrg" component = {RegisterOrg}/>
+            <Stack.Screen name = "Landing" component = {LandingScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "Register" component = {RegisterScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "RegisterOrg" component = {RegisterOrg} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "Login" component = {LoginScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "Activity" component = {ActivityScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "Search" component = {SearchScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "Profile" component = {ProfileScreen} options = {{ headerShown: false}}/>
           </Stack.Navigator>
         </NavigationContainer>
         
@@ -100,24 +119,18 @@ export class App extends Component {
 
     return(
       <Provider store={store}>
+        
         <NavigationContainer>
-          <Stack.Navigator initialRouteName = "Landing">
-            <Stack.Screen name = "Main" component = {MainScreen} options = {{ headerShown: true}}/>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-            <Stack.Screen name="RegisterUser" component={RegisterUser} />
-            <Stack.Screen name="RegisterOrg" component={RegisterOrg} />
-            
-          </Stack.Navigator>
+          <MyTabs />
         </NavigationContainer>
       </Provider>
+        
       
         
       )
     
   }
 }
+registerRootComponent(App);
 
 export default App
-
-
