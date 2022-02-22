@@ -44,6 +44,8 @@ import RegisterScreen from './components/auth/Register'
 import LoginScreen from './components/auth/Login';
 import { Component } from 'react/cjs/react.production.min';
 import MainScreen from './components/Main'
+import RegisterUser from './components/auth/RegisterUser'
+import RegisterOrg from './components/auth/RegisterOrg'
 
 const Stack = createStackNavigator();
 
@@ -87,6 +89,8 @@ export class App extends Component {
             <Stack.Screen name = "Landing" component = {LandingScreen} options = {{ headerShown: true}}/>
             <Stack.Screen name = "Register" component = {RegisterScreen}/>
             <Stack.Screen name = "Login" component = {LoginScreen}/>
+            <Stack.Screen name = "RegisterUser" component = {RegisterUser}/>
+            <Stack.Screen name = "RegisterOrg" component = {RegisterOrg}/>
           </Stack.Navigator>
         </NavigationContainer>
         
@@ -101,6 +105,8 @@ export class App extends Component {
             <Stack.Screen name = "Main" component = {MainScreen} options = {{ headerShown: true}}/>
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Register" component={RegisterScreen} />
+            <Stack.Screen name="RegisterUser" component={RegisterUser} />
+            <Stack.Screen name="RegisterOrg" component={RegisterOrg} />
             
           </Stack.Navigator>
         </NavigationContainer>
