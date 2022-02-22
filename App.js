@@ -13,7 +13,6 @@ import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ActivityScreen from './components/screens/Activity'
 import SearchScreen from './components/Search'
 
 import { registerRootComponent } from 'expo';
@@ -24,7 +23,6 @@ function MyTabs() {
     <Tab.Navigator>
       <Tab.Screen name="Home" component={MainScreen} />
       <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="Activity" component={ActivityScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
 
     </Tab.Navigator>
@@ -107,7 +105,6 @@ export class App extends Component {
             <Stack.Screen name = "Register" component = {RegisterScreen} options = {{ headerShown: false}}/>
             <Stack.Screen name = "RegisterOrg" component = {RegisterOrg} options = {{ headerShown: false}}/>
             <Stack.Screen name = "Login" component = {LoginScreen} options = {{ headerShown: false}}/>
-            <Stack.Screen name = "Activity" component = {ActivityScreen} options = {{ headerShown: false}}/>
             <Stack.Screen name = "Search" component = {SearchScreen} options = {{ headerShown: false}}/>
             <Stack.Screen name = "Profile" component = {ProfileScreen} options = {{ headerShown: false}}/>
           </Stack.Navigator>
