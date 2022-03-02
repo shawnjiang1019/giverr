@@ -36,8 +36,9 @@ import { Profile } from './Profile'
 import { createBottonTabNavigator} from '@react-navigation/bottom-tabs';
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
-
-
+import Background2 from './components/Background2'
+import Swipe from "../components/components/Swipe"
+import TopBar from "./components/TopBar"
 export class Main extends Component {
     componentDidMount(){
         this.props.fetchUser();
@@ -47,7 +48,7 @@ export class Main extends Component {
         console.log(currentUser)
         if(currentUser == undefined){
             return(
-                <View></View>
+                <View>Loading</View>
             )
         }
         return(
@@ -56,6 +57,7 @@ export class Main extends Component {
                 <button onClick={() => firebase.auth()
                     .signOut()
                     .then(() => console.log('User signed out!'))}>Sign out</button>
+                <Swipe />
             </View>
             
         )

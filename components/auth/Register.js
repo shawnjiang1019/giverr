@@ -64,7 +64,7 @@ export class Register extends Component {
         return (
             <Background>
                 <Logo />
-                <Header>Create Account</Header>
+                <Header>Create Post</Header>
                 <TextInput
                     placeholder="name"
                     onChangeText={(name) => this.setState({ name })}

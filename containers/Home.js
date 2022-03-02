@@ -1,4 +1,4 @@
-/*
+
 import React from 'react';
 import { View, ImageBackground } from 'react-native';
 import CardStack, { Card } from 'react-native-card-stack-swiper';
@@ -43,4 +43,3 @@ const Home = () => {
 
 export default Home;
 
-*/

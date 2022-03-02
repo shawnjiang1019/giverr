@@ -30,7 +30,7 @@ export default StyleSheet.create({
 		shadowOpacity: 0.05,
 		shadowRadius: 10,
 		shadowColor: BLACK,
-		shadowOffset: { height: 0, width: 0 }
+		//shadowOffset: { height: 0, width: 0 }
 	},
 	matchesCardItem: {
 		marginTop: -35,
@@ -86,7 +86,7 @@ export default StyleSheet.create({
 		shadowOpacity: 0.15,
 		shadowRadius: 20,
 		shadowColor: DARK_GRAY,
-		shadowOffset: { height: 10, width: 0 }
+		//shadowOffset: { height: 10, width: 0 }
 	},
 	miniButton: {
 		width: 40,
@@ -99,7 +99,7 @@ export default StyleSheet.create({
 		shadowOpacity: 0.15,
 		shadowRadius: 20,
 		shadowColor: DARK_GRAY,
-		shadowOffset: { height: 10, width: 0 }
+		//shadowOffset: { height: 10, width: 0 }
 	},
 	star: {
 		fontFamily: ICON_FONT,
@@ -129,7 +129,7 @@ export default StyleSheet.create({
 		shadowOpacity: 0.05,
 		shadowRadius: 10,
 		shadowColor: BLACK,
-		shadowOffset: { height: 0, width: 0 }
+		//shadowOffset: { height: 0, width: 0 }
 	},
 	cityText: {
 		fontFamily: ICON_FONT,
@@ -146,7 +146,7 @@ export default StyleSheet.create({
 		shadowOpacity: 0.05,
 		shadowRadius: 10,
 		shadowColor: BLACK,
-		shadowOffset: { height: 0, width: 0 }
+		//shadowOffset: { height: 0, width: 0 }
 	},
 	filtersText: {
 		fontFamily: ICON_FONT,
@@ -187,7 +187,7 @@ export default StyleSheet.create({
 		shadowOpacity: 0.05,
 		shadowRadius: 10,
 		shadowColor: BLACK,
-		shadowOffset: { height: 0, width: 0 }
+		//shadowOffset: { height: 0, width: 0 }
 	},
 	matchesProfileItem: {
 		width: 131,

@@ -16,12 +16,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { registerRootComponent } from 'expo';
 
+import Toast from 'react-native-toast-message';
+
 
 function MyTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={MainScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Home" component={MainScreen} options = {{ headerShown: false}} />
+      <Tab.Screen name="Profile" component={ProfileScreen} options = {{ headerShown: false}}/>
+      <Tab.Screen name="Add" component={AddScreen} options = {{ headerShown: false}}/>
+      <Tab.Screen name="AddPostScreen" component={AddPostScreenScreen} options = {{ headerShown: false}}/>
+      
+      
 
     </Tab.Navigator>
   );
@@ -57,8 +63,12 @@ import LandingScreen from './components/auth/Landing'
 import RegisterScreen from './components/auth/Register'
 import LoginScreen from './components/auth/Login';
 import { Component } from 'react/cjs/react.production.min';
-import MainScreen, { Main } from './components/Main'
+import MainScreen, { Main } from './components/Main';
 import ProfileScreen, {Profile} from './components/Profile';
+import AddScreen, {Add} from './components/main/Add';
+import AddPostScreenScreen, { AddPostScreen } from './components/AddPostScreen';
+import SaveScreen from './components/auth/Save'
+//import CreatePostScreen, {CreatePost} from './components/auth/CreatePost';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -114,6 +124,7 @@ export class App extends Component {
         
         <NavigationContainer>
           <MyTabs />
+          <Toast ref={(ref) => Toast.setRef(ref)} />
         </NavigationContainer>
       </Provider>
         

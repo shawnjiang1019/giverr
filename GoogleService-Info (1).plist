@@ -32,5 +32,9 @@
 	<string>1:941802088292:ios:e03f3511e4ab11ad8d7c71</string>
 	<key>DATABASE_URL</key>
 	<string>https://giverrapp-e1241-default-rtdb.firebaseio.com</string>
+	<key>NSCameraUsageDescription</key>
+<string>Allow $(PRODUCT_NAME) to use the camera</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Allow $(PRODUCT_NAME) to use the microphone</string>
 </dict>
 </plist>
