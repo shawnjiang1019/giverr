@@ -5,7 +5,21 @@ import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder } fro
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 import Icon from 'react-native-vector-icons/Ionicons'
-const Users = [
+
+
+
+
+
+/*
+const response = firebase
+                  .firestore()
+                  .collection('posts')
+                  .onSnapshot(documentSnapshot => {
+                  documentSnapshot.forEach(x => response.push(x.data())) 
+                })
+
+                */
+const posts = [
   { id: "1", uri: require('../assets/1.jpg') },
   { id: "2", uri: require('../assets/2.jpg') },
   { id: "3", uri: require('../assets/3.jpg') },
@@ -105,7 +119,7 @@ export default class App extends React.Component {
 
   renderUsers = () => {
 
-    return Users.map((item, i) => {
+    return posts.map((item, i) => {
 
 
       if (i < this.state.currentIndex) {

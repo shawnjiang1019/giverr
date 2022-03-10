@@ -14,6 +14,7 @@ import Button from './components/Button';
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 import DropDownPicker from 'react-native-dropdown-picker';
+import { user } from '../redux/reducers/user';
 
 
 
@@ -29,6 +30,7 @@ export class AddPostScreen extends Component {
             title: '',
             time: '',
             website: '',
+            user:''
         }
 
         this.onSubmitPost = this.onSubmitPost.bind(this)
@@ -37,19 +39,19 @@ export class AddPostScreen extends Component {
 
 
     onSubmitPost(){
-        const {post, title, time, website } = this.state;
+        const {post, title, time, website, user } = this.state;
         
         firebase
         .firestore()
         .collection('posts')
-        .doc(firebase.auth().currentUser.uid)
-        .collection("userPosts")
         .add({
             
             post: post,
             title: title,
             time: time,
-            website: website
+            website: website,
+            user: firebase.auth().currentUser.uid
+
 
 
         })

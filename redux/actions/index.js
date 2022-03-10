@@ -20,7 +20,7 @@ export function fetchUser(){
     })
 }
 
-export function fetchUserPosts() {
+export function fetchUserPosts1() {
     return ((dispatch) => {
         firebase.firestore()
             .collection("posts")
@@ -37,5 +37,39 @@ export function fetchUserPosts() {
                 dispatch({ type: USER_POSTS_STATE_CHANGE, posts: snapshot.data() })
             })
     })
+}
+
+export function fetchUserPosts() {
+    return ((dispatch) => {
+        firebase.firestore()
+            .collection("posts")
+            .doc(firebase.auth().currentUser.uid)
+            .collection("userPosts")
+            .orderBy("creation", "desc")
+            .get()
+            .then((snapshot) => {
+                let posts = snapshot.docs.map(doc => {
+                    const data = doc.data();
+                    const id = doc.id;
+                    return { id, ...data }
+                })
+                dispatch({ type: USER_POSTS_STATE_CHANGE, posts })
+            })
+    })
+}
+
+export async function getPosts(postsRetrieved){
+    var postList = []
+    var snapshot = await firebase
+                            .firestore()
+                            .collection("posts")
+                            .orderBy("title")
+                            .get()
+    snapshot.forEach((doc) => {
+        const postDoc = doc.data()
+        postDoc.id = doc.id
+        postList.push(postDoc)
+    })
+    postsRetrieved(postList)
 }
 

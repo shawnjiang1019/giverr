@@ -39,7 +39,7 @@ export class Register extends Component {
 
 
     onSignUp() {
-        const { email, password, name, location, interests } = this.state;
+        const { email, password, name, location } = this.state;
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((result) =>{
             firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).set({
