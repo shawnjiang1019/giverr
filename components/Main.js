@@ -53,10 +53,6 @@ export class Main extends Component {
         }
         return(
             <View>
-                <Text>{currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}</Text>
-                <button onClick={() => firebase.auth()
-                    .signOut()
-                    .then(() => console.log('User signed out!'))}>Sign out</button>
                 <Swipe />
             </View>
             

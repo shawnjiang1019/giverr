@@ -25,10 +25,9 @@ export class AddPostScreen extends Component {
 
         this.state = {
             
-            post: '',
-            title: '',
-            time: '',
-            website: '',
+            Title: '',
+            Description: '',
+            Image_Link: '',
         }
 
         this.onSubmitPost = this.onSubmitPost.bind(this)
@@ -37,7 +36,7 @@ export class AddPostScreen extends Component {
 
 
     onSubmitPost(){
-        const {post, title, time, website } = this.state;
+        const {Title, Description, Image_Link } = this.state;
         
         firebase
         .firestore()
@@ -46,10 +45,9 @@ export class AddPostScreen extends Component {
         .collection("userPosts")
         .add({
             
-            post: post,
-            title: title,
-            time: time,
-            website: website
+            Title: post,
+            Description: title,
+            Image_Link: time,
 
 
         })
@@ -61,22 +59,16 @@ export class AddPostScreen extends Component {
             <Logo />
                 <Header>Create Post</Header>
                 <TextInput
-                    placeholder="post"
-                    onChangeText={(post) => this.setState({ post })}
+                    placeholder="Title"
+                    onChangeText={(Title) => this.setState({ Title })}
                 />
                 <TextInput
-                    placeholder="title"
-                    onChangeText={(title) => this.setState({ title })}
+                    placeholder="Description"
+                    onChangeText={(Description) => this.setState({ Description })}
                 />
                 <TextInput
-                    placeholder="time"
-                    secureTextEntry={false}
-                    onChangeText={(time) => this.setState({ time })}
-                />
-
-                <TextInput
-                    placeholder="website"
-                    onChangeText={(website) => this.setState({ website })}
+                    placeholder="Image Link"
+                    onChangeText={(Image_Link) => this.setState({ Image_Link })}
                 />
 
                 <Button

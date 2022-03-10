@@ -13,7 +13,7 @@ import Button from '../components/Button'
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 
-export class Register extends Component {
+export class RegisterUser extends Component {
     constructor(props) {
         super(props);
 
@@ -21,19 +21,21 @@ export class Register extends Component {
             email: '',
             password: '',
             name: '',
+            phone: ''
         }
 
         this.onSignUp = this.onSignUp.bind(this)
     }
 
     onSignUp() {
-        const { email, password, name } = this.state;
+        const { email, password, name, phone } = this.state;
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((result) =>{
             firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).set({
                 name,
                 email,
                 password,
+                phone,
             })
             console.log(result)
         })        
@@ -43,14 +45,33 @@ export class Register extends Component {
     }
 
     render() {
-        
         return (
             <Background>
                 <Logo />
                 <Header>Create Account</Header>
-                <Button title="RegisterOrg" mode="contained" onPress={() => this.props.navigation.navigate('RegisterOrg')}>Register An Organization</Button>
-               <Button title="RegisterUser" mode="contained" onPress={() => this.props.navigation.navigate('RegisterUser')}>Register As A User </Button>
+                <TextInput
+                    placeholder="name"
+                    onChangeText={(name) => this.setState({ name })}
+                />
+                <TextInput
+                    placeholder="email"
+                    onChangeText={(email) => this.setState({ email })}
+                />
+                <TextInput
+                    placeholder="phone number"
+                    onChangeText={(phone) => this.setState({ phone })}
+                />
+                <TextInput
+                    placeholder="password"
+                    secureTextEntry={true}
+                    onChangeText={(password) => this.setState({ password })}
+                />
 
+                <Button
+                    onPress={() => this.onSignUp()}
+                    title="Sign Up"
+                    mode="contained"
+                > Register </Button>
                 <View style={styles.row}>
                     <Text>Already have an account? </Text>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
@@ -59,11 +80,10 @@ export class Register extends Component {
                 </View>
             </Background>
         )
-        
     }
 }
 
-export default Register
+export default RegisterUser
 
 
 const styles = StyleSheet.create({

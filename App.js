@@ -23,9 +23,10 @@ function MyTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={MainScreen} options = {{ headerShown: false}} />
-      <Tab.Screen name="Profile" component={ProfileScreen} options = {{ headerShown: false}}/>
-      <Tab.Screen name="Add" component={AddScreen} options = {{ headerShown: false}}/>
+      <Tab.Screen name="Search" component={SearchScreen} options = {{ headerShown: false}} />
       <Tab.Screen name="AddPostScreen" component={AddPostScreenScreen} options = {{ headerShown: false}}/>
+      <Tab.Screen name="Profile" component={ProfileScreen} options = {{ headerShown: false}}/>
+      
       
       
 
@@ -68,7 +69,12 @@ import ProfileScreen, {Profile} from './components/Profile';
 import AddScreen, {Add} from './components/main/Add';
 import AddPostScreenScreen, { AddPostScreen } from './components/AddPostScreen';
 import SaveScreen from './components/auth/Save'
-//import CreatePostScreen, {CreatePost} from './components/auth/CreatePost';
+import SearchScreen, {Search} from './components/Search'
+import LoginUserScreen, {LoginUser} from "./components/auth/LoginUser"
+import LoginOrgScreen, {LoginOrg} from "./components/auth/LoginOrg"
+import RegisterUserScreen, {RegisterUser} from "./components/auth/RegisterUser"
+import RegisterOrgScreen, {RegisterOrg} from "./components/auth/RegisterOrg"
+//import CreatePostScreen, {1CreatePost} from './components/auth/CreatePost';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -112,6 +118,11 @@ export class App extends Component {
             <Stack.Screen name = "Landing" component = {LandingScreen} options = {{ headerShown: false}}/>
             <Stack.Screen name = "Register" component = {RegisterScreen} options = {{ headerShown: false}}/>
             <Stack.Screen name = "Login" component = {LoginScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "Search" component = {SearchScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "LoginUser" component = {LoginUserScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "LoginOrg" component = {LoginOrgScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "RegisterUser" component = {RegisterUserScreen} options = {{ headerShown: false}}/>
+            <Stack.Screen name = "RegisterOrg" component = {RegisterOrgScreen} options = {{ headerShown: false}}/>
           </Stack.Navigator>
         </NavigationContainer>
         

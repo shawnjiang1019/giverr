@@ -49,10 +49,27 @@ export class Login extends Component {
 
                 <Logo />
 
-                <Header>Welcome </Header>
-                <Button title="LoginOrg" mode="contained" onPress={() => this.props.navigation.navigate('LoginOrg')}>Login as a Organization</Button>
-               <Button title="LoginUser" mode="contained" onPress={() => this.props.navigation.navigate('LoginUser')}>Login as a User</Button>
-               <View style={styles.row}>
+                <Header>User Login</Header>
+                <TextInput
+                    placeholder="email"
+                    onChangeText={(email) => this.setState({ email })}
+                />
+                <TextInput
+                    placeholder="password"
+                    secureTextEntry={true}
+                    onChangeText={(password) => this.setState({ password })}
+                />
+                <View style={styles.forgotPassword}>
+                    <TouchableOpacity onPress={() => navigation.navigate('ResetPasswordScreen')}>
+                
+                        <Text style={styles.forgot}>Forgot your password?</Text>
+
+                    </TouchableOpacity>
+                </View>
+
+                <Button onPress={() => this.onSignUp()} title="Login" mode="contained"> Login </Button>
+
+                <View style={styles.row}>
                     <Text>Don't have an account? </Text>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
                         <Text style={styles.link}>Register</Text>
