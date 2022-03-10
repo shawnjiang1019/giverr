@@ -1,6 +1,6 @@
 //Fetch and save users
 import firebase from "firebase/compat/app"
-import { USER_STATE_CHANGE } from "../constants/index"
+import { USER_STATE_CHANGE, USER_POSTS_STATE_CHANGE } from "../constants/index"
 
 export function fetchUser(){
     return((dispatch) => {
@@ -34,7 +34,8 @@ export function fetchUserPosts() {
                     const id = doc.id;
                     return { id, ...data }
                 })
-                dispatch({ type: USER_POSTS_STATE_CHANGE, posts })
+                dispatch({ type: USER_POSTS_STATE_CHANGE, posts: snapshot.data() })
             })
     })
 }
+
