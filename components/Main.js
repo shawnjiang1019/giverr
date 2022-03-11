@@ -25,13 +25,13 @@ export default (Main);
 */
 
 
-import React, { Component, useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchUser, fetchUserPosts } from '../redux/actions/index'
+import { fetchUser } from '../redux/actions/index'
 import { Profile } from './Profile'
 import { createBottonTabNavigator} from '@react-navigation/bottom-tabs';
 import firebase from 'firebase/compat/app'
@@ -39,8 +39,7 @@ import "firebase/firestore";
 import Background2 from './components/Background2'
 import Swipe from "../components/components/Swipe"
 import TopBar from "./components/TopBar"
-import { QuerySnapshot } from 'firebase/firestore'
-import { async } from '@firebase/util'
+
 
 
 function idk(){
@@ -81,52 +80,27 @@ function idk(){
         
     );
 }
-
-
 export class Main extends Component {
+
+
+    
     componentDidMount(){
         this.props.fetchUser();
-        
     }
+
+
+    
     render() {
-        const { currentUser, posts } = this.props;
-
-        
-
-       
-
-        firebase
-        .firestore()
-        .collection('posts')
-        .doc(firebase.auth().currentUser.uid)
-        .collection("userPosts")
-        .get()
-        .then((QuerySnapshot) => {
-            QuerySnapshot.forEach(snapshot => {
-                let data = snapshot.data();
-                console.log(data);
-            })
-        })
-            
-        
+        const { currentUser } = this.props;
         console.log(currentUser)
         if(currentUser == undefined){
             return(
                 <View>Loading</View>
             )
         }
-
-        
         return(
             <View>
-                <Text>{currentUser.name} is logged in, {currentUser.email} is your email, your password is: {currentUser.password}</Text>
-                <button onClick={() => firebase.auth()
-                    .signOut()
-                    .then(() => console.log('User signed out!'))}>Sign out</button>
                 <Swipe />
-                <idk/>
-                
-
                 
             </View>
             
@@ -134,8 +108,7 @@ export class Main extends Component {
     }
 }
 const mapStateToProps = (store) => ({
-    currentUser: store.userState.currentUser,
-    
+    currentUser: store.userState.currentUser
 })
 const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
 

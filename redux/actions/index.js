@@ -71,5 +71,7 @@ export async function getPosts(postsRetrieved){
         postList.push(postDoc)
     })
     postsRetrieved(postList)
+
+    return postList;
 }
 

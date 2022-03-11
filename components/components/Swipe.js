@@ -1,10 +1,15 @@
 
-import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder, FlatList } from 'react-native';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 import Icon from 'react-native-vector-icons/Ionicons'
+
+
+import firebase from 'firebase/compat/app'
+import "firebase/firestore";
+import { documentId, QuerySnapshot } from 'firebase/firestore';
 
 
 
@@ -19,18 +24,20 @@ const response = firebase
                 })
 
                 */
-const posts = [
-  { id: "1", uri: require('../assets/1.jpg') },
-  { id: "2", uri: require('../assets/2.jpg') },
-  { id: "3", uri: require('../assets/3.jpg') },
-  { id: "4", uri: require('../assets/4.jpg') },
-  { id: "5", uri: require('../assets/5.jpg') },
-  { id: "6", uri: require('../assets/6.jpg') },
-  { id: "7", uri: require('../assets/7.jpg') },
-  { id: "8", uri: require('../assets/9.jpg') },
-  { id: "9", uri: require('../assets/9.jpg') },
-  { id: "10", uri: require('../assets/10.jpg') },
-]
+
+
+
+
+
+
+
+
+
+
+const posts = []
+
+
+
 
 export default class App extends React.Component {
 
@@ -39,7 +46,8 @@ export default class App extends React.Component {
 
     this.position = new Animated.ValueXY()
     this.state = {
-      currentIndex: 0
+      currentIndex: 0,
+      
     }
 
     this.rotate = this.position.x.interpolate({
@@ -79,6 +87,8 @@ export default class App extends React.Component {
     })
 
   }
+
+  
   UNSAFE_componentWillMount() {
     this.PanResponder = PanResponder.create({
 
@@ -118,6 +128,19 @@ export default class App extends React.Component {
   }
 
   renderUsers = () => {
+    firebase.firestore().collection('posts').get().then(querySnapshot => {
+      console.log('Total posts: ', querySnapshot.size);
+      querySnapshot.forEach(documentSnapshot => {
+        console.log('Posts : ', documentSnapshot.data());
+        
+        posts.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id
+        })
+
+        console.log('Post titles: ', posts[0].title);
+      });
+    })
 
     return posts.map((item, i) => {
 
@@ -143,8 +166,10 @@ export default class App extends React.Component {
 
             <Image
               style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
-              source={item.uri} />
-
+              source={require('../assets/1.jpg')} />
+            <Text> Title: {item.title}
+            </Text>
+            
           </Animated.View>
         )
       }
@@ -169,7 +194,11 @@ export default class App extends React.Component {
 
             <Image
               style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
-              source={item.uri} />
+              source={'../assets/1.jpg'} />
+            
+           
+
+              
 
           </Animated.View>
         )
@@ -189,6 +218,15 @@ export default class App extends React.Component {
         <View style={{ height: 60 }}>
 
         </View>
+        <FlatList
+      data={posts}
+      renderItem={({ item }) => (
+        <View style={{ height: 50, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          
+        </View>
+      )}
+    />
+        
 
 
       </View>
