@@ -30,13 +30,14 @@ export class Register extends Component {
             money: '',
             hear: '',
             location: '',
+            Logo_Link
         }
 
         this.onSignUp = this.onSignUp.bind(this)
     }
 
     onSignUp() {
-        const { email, password, name, phone, website, address, cra, cause, location, service, money, hear, } = this.state;
+        const { email, password, name, phone, website, address, cra, cause, location, service, Logo_Link, money, hear, } = this.state;
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((result) =>{
             firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).set({
@@ -51,7 +52,8 @@ export class Register extends Component {
                 service, 
                 money, 
                 hear,
-                location
+                location,
+                Logo_Link
             })
             console.log(result)
         })        
@@ -75,6 +77,10 @@ export class Register extends Component {
                 <TextInput
                     placeholder="phone number"
                     onChangeText={(phone) => this.setState({ phone })}
+                />
+                <TextInput
+                    placeholder="Logo Link"
+                    onChangeText={(Logo_Link) => this.setState({ Logo_Link })}
                 />
                 <TextInput
                     placeholder="password"
