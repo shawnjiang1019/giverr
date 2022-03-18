@@ -28,6 +28,7 @@ export class AddPostScreen extends Component {
             Title: '',
             Description: '',
             Image_Link: '',
+            simplykLink: ''
         }
 
         this.onSubmitPost = this.onSubmitPost.bind(this)
@@ -36,7 +37,7 @@ export class AddPostScreen extends Component {
 
 
     onSubmitPost(){
-        const {Title, Description, Image_Link } = this.state;
+        const {Title, Description, Image_Link, simplykLink } = this.state;
         
         firebase
         .firestore()
@@ -45,9 +46,10 @@ export class AddPostScreen extends Component {
         .collection("userPosts")
         .add({
             
-            Title: post,
-            Description: title,
-            Image_Link: time,
+            Title: Title,
+            Description: Description,
+            Image_Link: Image_Link,
+            simplykLink: simplykLink
 
 
         })

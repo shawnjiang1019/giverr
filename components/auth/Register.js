@@ -21,39 +21,26 @@ export class Register extends Component {
             email: '',
             password: '',
             name: '',
-<<<<<<< Updated upstream
-=======
-            location: '',
-            likedPosts: []
-            
-
-            
-            
->>>>>>> Stashed changes
         }
 
         this.onSignUp = this.onSignUp.bind(this)
     }
 
     onSignUp() {
-<<<<<<< Updated upstream
-        const { email, password, name } = this.state;
-=======
+
+
         const { email, password, name, location, likedPosts } = this.state;
->>>>>>> Stashed changes
+
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((result) =>{
             firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).set({
                 name,
                 email,
-                password,
-<<<<<<< Updated upstream
-=======
-                location,
+                password,         location,
                 likedPosts
                 
                 
->>>>>>> Stashed changes
+
             })
             
             console.log(result)

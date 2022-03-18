@@ -1,11 +1,7 @@
 
-<<<<<<< Updated upstream
-import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
-=======
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder, FlatList, Linking, Button } from 'react-native';
->>>>>>> Stashed changes
+
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -31,15 +27,13 @@ export default class App extends React.Component {
 
     this.position = new Animated.ValueXY()
     this.state = {
-<<<<<<< Updated upstream
-      currentIndex: 0
-=======
+
       currentIndex: 0,
       likedPosts: []
       
       
       
->>>>>>> Stashed changes
+
     }
 
     this.rotate = this.position.x.interpolate({
@@ -79,12 +73,7 @@ export default class App extends React.Component {
     })
 
   }
-<<<<<<< Updated upstream
-=======
 
-
- 
->>>>>>> Stashed changes
   UNSAFE_componentWillMount() {
     
     this.PanResponder = PanResponder.create({
@@ -148,12 +137,12 @@ export default class App extends React.Component {
 
             </Animated.View>
 
-<<<<<<< Updated upstream
+
             <Image
               style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
               source={item.uri} />
 
-=======
+
             
             <Text> Title: {item.title}
             </Text>
@@ -162,7 +151,7 @@ export default class App extends React.Component {
             
             
             <Button title="Click me" onPress={ ()=>{ Linking.openURL(item.website)}} />
->>>>>>> Stashed changes
+
           </Animated.View>
         )
       }
