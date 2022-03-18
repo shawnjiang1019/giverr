@@ -100,8 +100,18 @@ export class Register extends Component {
 
                 <Picker selectedValue = {this.state.cause} onValueChange = {(cause) => this.setState({ cause })}>
                     <Picker.Item label = "Which Cause Do You Fall Under?" value = {null} />
-                    <Picker.Item label = "List" value = "List" />
-                    <Picker.Item label = "List1" value = "List1" />
+                    <Picker.Item label = "Animals" value = "Animals" />
+                    <Picker.Item label = "Arts" value = "Arts" />
+                    <Picker.Item label = "Culture" value = "Culture" />
+                    <Picker.Item label = "Education" value = "Education" />
+                    <Picker.Item label = "Environment" value = "Environment" />
+                    <Picker.Item label = "Fitness" value = "Fitness" />
+                    <Picker.Item label = "Games" value = "Games" />
+                    <Picker.Item label = "Health" value = "Health" />
+                    <Picker.Item label = "STEM" value = "STEM" />
+                    <Picker.Item label = "Children / Youth" value = "Children / Youth" />
+                    <Picker.Item label = "Fundraising" value = "Fundraising" />
+                    <Picker.Item label = "Volunteering" value = "Volunteering" />
                 </Picker>
                 <br/>
                 <Picker selectedValue = {this.state.service} onValueChange = {(service) => this.setState({ service })}>
@@ -118,8 +128,10 @@ export class Register extends Component {
                 <br/>
                 <Picker selectedValue = {this.state.hear} onValueChange = {(hear) => this.setState({ hear })}>
                     <Picker.Item label = "How Did You Hear About Us?" value = {null} />
-                    <Picker.Item label = "List" value = "List" />
-                    <Picker.Item label = "List1" value = "List1" />
+                    <Picker.Item label = "Word Of Mouth" value = "Word Of Mouth" />
+                    <Picker.Item label = "Social Media" value = "Social Media" />
+                    <Picker.Item label = "Email" value = "Email" />
+                    <Picker.Item label = "Browsing On The Web" value = "Browsing On The Web" />
                 </Picker>
                 <Button
                     onPress={() => this.onSignUp()}
