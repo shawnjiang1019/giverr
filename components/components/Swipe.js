@@ -1,6 +1,7 @@
 
-import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder, FlatList, Linking, Button } from 'react-native';
+
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -26,7 +27,13 @@ export default class App extends React.Component {
 
     this.position = new Animated.ValueXY()
     this.state = {
-      currentIndex: 0
+
+      currentIndex: 0,
+      likedPosts: []
+      
+      
+      
+
     }
 
     this.rotate = this.position.x.interpolate({
@@ -132,6 +139,16 @@ export default class App extends React.Component {
             <Image
               style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
               source={item.uri} />
+
+
+            
+            <Text> Title: {item.title}
+            </Text>
+            <Text> link: {item.website}
+            </Text>
+            
+            
+            <Button title="Click me" onPress={ ()=>{ Linking.openURL(item.website)}} />
 
           </Animated.View>
         )
