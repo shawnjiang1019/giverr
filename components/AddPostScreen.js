@@ -14,6 +14,7 @@ import Button from './components/Button';
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 import DropDownPicker from 'react-native-dropdown-picker';
+import { user } from '../redux/reducers/user';
 
 
 
@@ -25,10 +26,11 @@ export class AddPostScreen extends Component {
 
         this.state = {
             
-            Title: '',
-            Description: '',
-            Image_Link: '',
-            simplykLink: ''
+            post: '',
+            title: '',
+            time: '',
+            website: '',
+            user:''
         }
 
         this.onSubmitPost = this.onSubmitPost.bind(this)
@@ -37,19 +39,19 @@ export class AddPostScreen extends Component {
 
 
     onSubmitPost(){
-        const {Title, Description, Image_Link, simplykLink } = this.state;
+        const {post, title, time, website, user } = this.state;
         
         firebase
         .firestore()
         .collection('posts')
-        .doc(firebase.auth().currentUser.uid)
-        .collection("userPosts")
         .add({
             
-            Title: Title,
-            Description: Description,
-            Image_Link: Image_Link,
-            simplykLink: simplykLink
+            post: post,
+            title: title,
+            time: time,
+            website: website,
+            user: firebase.auth().currentUser.uid
+
 
 
         })
@@ -61,16 +63,22 @@ export class AddPostScreen extends Component {
             <Logo />
                 <Header>Create Post</Header>
                 <TextInput
-                    placeholder="Title"
-                    onChangeText={(Title) => this.setState({ Title })}
+                    placeholder="post"
+                    onChangeText={(post) => this.setState({ post })}
                 />
                 <TextInput
-                    placeholder="Description"
-                    onChangeText={(Description) => this.setState({ Description })}
+                    placeholder="title"
+                    onChangeText={(title) => this.setState({ title })}
                 />
                 <TextInput
-                    placeholder="Image Link"
-                    onChangeText={(Image_Link) => this.setState({ Image_Link })}
+                    placeholder="time"
+                    secureTextEntry={false}
+                    onChangeText={(time) => this.setState({ time })}
+                />
+
+                <TextInput
+                    placeholder="website"
+                    onChangeText={(website) => this.setState({ website })}
                 />
 
                 <Button
