@@ -26,11 +26,11 @@ export class AddPostScreen extends Component {
 
         this.state = {
             
-            description: '',
+            post: '',
             title: '',
-            image: '',
-            user:'',
-            link: '',
+            time: '',
+            website: '',
+            user:''
         }
 
         this.onSubmitPost = this.onSubmitPost.bind(this)
@@ -39,17 +39,17 @@ export class AddPostScreen extends Component {
 
 
     onSubmitPost(){
-        const {description, title, image, user, link} = this.state;
+        const {post, title, time, website, user } = this.state;
         
         firebase
         .firestore()
         .collection('posts')
         .add({
             
-            description: description,
+            post: post,
             title: title,
-            image: image,
-            link: link,
+            time: time,
+            website: website,
             user: firebase.auth().currentUser.uid
 
 
@@ -63,22 +63,22 @@ export class AddPostScreen extends Component {
             <Logo />
                 <Header>Create Post</Header>
                 <TextInput
-                    placeholder="Title"
+                    placeholder="post"
+                    onChangeText={(post) => this.setState({ post })}
+                />
+                <TextInput
+                    placeholder="title"
                     onChangeText={(title) => this.setState({ title })}
                 />
                 <TextInput
-                    placeholder="Caption"
-                    onChangeText={(description) => this.setState({ description })}
+                    placeholder="time"
+                    secureTextEntry={false}
+                    onChangeText={(time) => this.setState({ time })}
                 />
 
                 <TextInput
-                    placeholder="Upload Image"
-                    onChangeText={(image) => this.setState({ image })}
-                />
-
-                <TextInput
-                    placeholder="SimplyK Donate Link"
-                    onChangeText={(link) => this.setState({ link })}
+                    placeholder="website"
+                    onChangeText={(website) => this.setState({ website })}
                 />
 
                 <Button
