@@ -7,7 +7,7 @@ import { getApps, initializeApp } from "firebase/app";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
@@ -22,11 +22,11 @@ import Toast from 'react-native-toast-message';
 function MyTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={MatchesScreen} options = {{ headerShown: false}} />
-      <Tab.Screen name="Search" component={SearchScreen} options = {{ headerShown: false}} />
-      <Tab.Screen name="AddPostScreen" component={AddPostScreenScreen} options = {{ headerShown: false}}/>
-      <Tab.Screen name="Profile" component={ProfileScreen} options = {{ headerShown: false}}/>
-      <Tab.Screen name="MatchesPage" component={MatchesPageScreen} options = {{ headerShown: false}}/>
+      <Tab.Screen name="Home" component={MatchesScreen} options = {{ headerShown: true}} />
+  
+      <Tab.Screen name="Create A Post" component={AddPostScreenScreen} options = {{ headerShown: true}}/>
+      <Tab.Screen name="My Profile" component={ProfileScreen} options = {{ headerShown: true}}/>
+      <Tab.Screen name="My Liked Posts" component={MatchesPageScreen} options = {{ headerShown: true}}/>
       
       
       

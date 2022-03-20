@@ -26,9 +26,9 @@ export class AddPostScreen extends Component {
 
         this.state = {
             
-            description: '',
+            post: '',
             title: '',
-            image: '',
+            website: '',
             user:'',
             link: '',
         }
@@ -39,16 +39,16 @@ export class AddPostScreen extends Component {
 
 
     onSubmitPost(){
-        const {description, title, image, user, link} = this.state;
+        const {post, title, website, user, link} = this.state;
         
         firebase
         .firestore()
         .collection('posts')
         .add({
             
-            description: description,
+            post: post,
             title: title,
-            image: image,
+            website: website,
             link: link,
             user: firebase.auth().currentUser.uid
 
@@ -61,19 +61,18 @@ export class AddPostScreen extends Component {
         return (
             <Background>
             <Logo />
-                <Header>Create Post</Header>
                 <TextInput
                     placeholder="Title"
                     onChangeText={(title) => this.setState({ title })}
                 />
                 <TextInput
                     placeholder="Caption"
-                    onChangeText={(description) => this.setState({ description })}
+                    onChangeText={(post) => this.setState({ post })}
                 />
 
                 <TextInput
                     placeholder="Upload Image"
-                    onChangeText={(image) => this.setState({ image })}
+                    onChangeText={(website) => this.setState({ website })}
                 />
 
                 <TextInput
