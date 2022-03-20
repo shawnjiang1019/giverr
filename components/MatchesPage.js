@@ -12,6 +12,9 @@ import {
 import _ from "lodash";
 import { ListItem, SearchBar, Avatar, Button, Card } from "react-native-elements";
 import { getUsers, contains } from "./assets/data";
+import firebase from 'firebase/compat/app'
+import "firebase/firestore";
+import { documentId, QuerySnapshot } from 'firebase/firestore';
 
 const DATA = [
   { id: 1, text: 'Project Name #1', uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png' },
@@ -23,6 +26,9 @@ const DATA = [
   { id: 7, text: 'Project Name #7', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg' },
   { id: 8, text: 'Project Name #8', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg' },
 ];
+
+
+
 
 class MatchesPage extends Component {
   constructor(props) {
@@ -105,26 +111,39 @@ class MatchesPage extends Component {
   };
 
   render() {
+    const postData = []
+
+    firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('likedPosts').get().then(querySnapshot => {
+      console.log('Total posts: ', querySnapshot.size);
+      querySnapshot.forEach(documentSnapshot => {
+        console.log('Posts : ', documentSnapshot.data());
+        
+        postData.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id
+        })
+      });
+    })
 
     
     return (
       <SafeAreaView>
         <StatusBar style="light-content" />
         <FlatList
-          data={DATA}
+          data={postData}
           renderItem={({ item }) => (
             <Card>
           <Text style = {{marginBottom : 10, paddingBottom: 10, fontSize: 20, fontWeight: "bold", textAlign: "center"} }>
-          {item.text}
+          {item.title}
 
         </Text>
 
         <Image 
-                source={{uri: item.uri}} 
+                source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'}} 
                 style={{paddingRight: 10, height: 300 }} 
             />
         <Text style = {{marginBottom : 10, paddingTop: 10}}>
-          I can customize
+          <Text>{item.title}</Text>
         </Text>
 
         <Button
