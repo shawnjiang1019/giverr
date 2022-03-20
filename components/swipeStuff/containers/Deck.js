@@ -17,7 +17,7 @@ const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH
 const SWIPE_OUT_DURATION = 250
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchUser } from 'C:/Users/shawn/giverr/redux/actions/index'
+import { fetchUser } from '../../../redux/actions/index'
 
 class Deck extends Component {
 	static defaultProps = {
@@ -152,7 +152,7 @@ class Deck extends Component {
 			return (
 				<Animated.View 
 				 	key={item.id} 
-				 	style={[styles.cardStyle, { top: 5 * (i - this.state.index) }]}
+				 	style={[styles.cardStyle, { top: 0 * (i - this.state.index) }]}
 					>
 					{this.props.renderCard(item)}
                     

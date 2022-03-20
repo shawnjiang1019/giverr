@@ -26,11 +26,11 @@ export class AddPostScreen extends Component {
 
         this.state = {
             
-            post: '',
+            description: '',
             title: '',
-            time: '',
-            website: '',
-            user:''
+            image: '',
+            user:'',
+            link: '',
         }
 
         this.onSubmitPost = this.onSubmitPost.bind(this)
@@ -39,17 +39,17 @@ export class AddPostScreen extends Component {
 
 
     onSubmitPost(){
-        const {post, title, time, website, user } = this.state;
+        const {description, title, image, user, link} = this.state;
         
         firebase
         .firestore()
         .collection('posts')
         .add({
             
-            post: post,
+            description: description,
             title: title,
-            time: time,
-            website: website,
+            image: image,
+            link: link,
             user: firebase.auth().currentUser.uid
 
 
@@ -63,22 +63,22 @@ export class AddPostScreen extends Component {
             <Logo />
                 <Header>Create Post</Header>
                 <TextInput
-                    placeholder="post"
-                    onChangeText={(post) => this.setState({ post })}
-                />
-                <TextInput
-                    placeholder="title"
+                    placeholder="Title"
                     onChangeText={(title) => this.setState({ title })}
                 />
                 <TextInput
-                    placeholder="time"
-                    secureTextEntry={false}
-                    onChangeText={(time) => this.setState({ time })}
+                    placeholder="Caption"
+                    onChangeText={(description) => this.setState({ description })}
                 />
 
                 <TextInput
-                    placeholder="website"
-                    onChangeText={(website) => this.setState({ website })}
+                    placeholder="Upload Image"
+                    onChangeText={(image) => this.setState({ image })}
+                />
+
+                <TextInput
+                    placeholder="SimplyK Donate Link"
+                    onChangeText={(link) => this.setState({ link })}
                 />
 
                 <Button
