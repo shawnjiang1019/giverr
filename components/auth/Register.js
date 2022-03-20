@@ -21,6 +21,8 @@ export class Register extends Component {
             email: '',
             password: '',
             name: '',
+            location: '',
+            likedPosts: []
         }
 
         this.onSignUp = this.onSignUp.bind(this)
@@ -36,9 +38,9 @@ export class Register extends Component {
             firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).set({
                 name,
                 email,
-                password,         location,
-                likedPosts
-                
+                password,         
+                likedPosts,
+                location,
                 
 
             })

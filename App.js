@@ -22,10 +22,11 @@ import Toast from 'react-native-toast-message';
 function MyTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={MainScreen} options = {{ headerShown: false}} />
+      <Tab.Screen name="Home" component={MatchesScreen} options = {{ headerShown: false}} />
       <Tab.Screen name="Search" component={SearchScreen} options = {{ headerShown: false}} />
       <Tab.Screen name="AddPostScreen" component={AddPostScreenScreen} options = {{ headerShown: false}}/>
       <Tab.Screen name="Profile" component={ProfileScreen} options = {{ headerShown: false}}/>
+      <Tab.Screen name="MatchesPage" component={MatchesPageScreen} options = {{ headerShown: false}}/>
       
       
       
@@ -74,6 +75,8 @@ import LoginUserScreen, {LoginUser} from "./components/auth/LoginUser"
 import LoginOrgScreen, {LoginOrg} from "./components/auth/LoginOrg"
 import RegisterUserScreen, {RegisterUser} from "./components/auth/RegisterUser"
 import RegisterOrgScreen, {RegisterOrg} from "./components/auth/RegisterOrg"
+import MatchesPageScreen, {MatchesPage} from "./components/MatchesPage"
+import MatchesScreen, { Matches } from "./components/Matches"
 //import CreatePostScreen, {1CreatePost} from './components/auth/CreatePost';
 
 const Stack = createStackNavigator();

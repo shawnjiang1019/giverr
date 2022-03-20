@@ -49,7 +49,7 @@ export class Profile extends Component {
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>{currentUser.name}</Text>
+              
               <Text style={styles.info}>UX Designer / Mobile developer</Text>
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
               <Text style={styles.name}>Location: {currentUser.location}</Text>
@@ -57,10 +57,11 @@ export class Profile extends Component {
 
               
               <TouchableOpacity style={styles.buttonContainer} onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained">
-                <Text>Sign Out</Text> 
+              <Text style={styles.name}>{currentUser.name}</Text>
+                
               </TouchableOpacity>
-
-              
+              <Text >{currentUser.name}</Text>
+              <TouchableOpacity><Text style={styles.name}>{currentUser.name}</Text></TouchableOpacity>
               
             </View>
         </View>

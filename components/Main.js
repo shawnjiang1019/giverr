@@ -39,47 +39,10 @@ import "firebase/firestore";
 import Background2 from './components/Background2'
 import Swipe from "../components/components/Swipe"
 import TopBar from "./components/TopBar"
+import Matches from "../containers/Matches"
 
 
 
-function idk(){
-    const [ allPosts, setPosts] = useState([])
-
-    useEffect(() =>{
-        fetchPosts();
-
-    }, [])
-
-    const fetchPosts=async()=>{
-        const response = firebase.firestore().collection("posts")
-        .doc(firebase.auth().currentUser.uid)
-        .collection("userPosts");
-        const data = await response.get();
-        data.docs.forEach(item=>{
-            setPosts([...allPosts,item.data()])
-        })
-    }
-
-    return (
-        <View>
-      
-        
-          
-            
-                <Text>{allPosts.title}</Text>
-                <Text>{allPosts.post}</Text>
-
-
-            
-              
-            
-          
-        
-      
-    </View>
-        
-    );
-}
 export class Main extends Component {
     componentDidMount(){
         this.props.fetchUser();
@@ -89,12 +52,13 @@ export class Main extends Component {
         console.log(currentUser)
         if(currentUser == undefined){
             return(
-                <View>Loading</View>
+                <View><Text>Loading</Text></View>
             )
         }
         return(
             <View>
-                <Swipe />
+                <Text>{currentUser.name}</Text>
+                <Swipe/>
             </View>
             
         )
