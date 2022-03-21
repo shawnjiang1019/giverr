@@ -115,7 +115,7 @@ export class AddPostScreen extends Component {
                 
 
                 <Button
-                    onPress={() => this.onSubmitPost()}
+                    onPress={() => {this.onSubmitPost(); this.props.navigation.navigate('My Posts');}}
                     title="Create Post"
                     mode="contained"
                 > Create </Button>
