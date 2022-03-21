@@ -4,7 +4,7 @@ import { theme } from '../core/theme'
 
 export default function Background({ children }) {
   return (
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView style={styles.background}>
         {children}
       </KeyboardAvoidingView>
   )

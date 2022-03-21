@@ -79,11 +79,7 @@ export class Register extends Component {
                     onChangeText={(phone) => this.setState({ phone })}
                 />
                 <TextInput
-                    placeholder="Logo Link"
-                    onChangeText={(Logo_Link) => this.setState({ Logo_Link })}
-                />
-                <TextInput
-                    placeholder="password"
+                    placeholder="Password"
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({ password })}
                 />
@@ -103,42 +99,23 @@ export class Register extends Component {
                     placeholder="CRA number"
                     onChangeText={(cra) => this.setState({ cra })}
                 />
-
-                <Picker selectedValue = {this.state.cause} onValueChange = {(cause) => this.setState({ cause })}>
-                    <Picker.Item label = "Which Cause Do You Fall Under?" value = {null} />
-                    <Picker.Item label = "Animals" value = "Animals" />
-                    <Picker.Item label = "Arts" value = "Arts" />
-                    <Picker.Item label = "Culture" value = "Culture" />
-                    <Picker.Item label = "Education" value = "Education" />
-                    <Picker.Item label = "Environment" value = "Environment" />
-                    <Picker.Item label = "Fitness" value = "Fitness" />
-                    <Picker.Item label = "Games" value = "Games" />
-                    <Picker.Item label = "Health" value = "Health" />
-                    <Picker.Item label = "STEM" value = "STEM" />
-                    <Picker.Item label = "Children / Youth" value = "Children / Youth" />
-                    <Picker.Item label = "Fundraising" value = "Fundraising" />
-                    <Picker.Item label = "Volunteering" value = "Volunteering" />
-                </Picker>
-                <br/>
-                <Picker selectedValue = {this.state.service} onValueChange = {(service) => this.setState({ service })}>
-                    <Picker.Item label = "Do You Serve Outside the FMWB Region?" value = {null} />
-                    <Picker.Item label = "Yes" value = "Yes" />
-                    <Picker.Item label = "No" value = "No" />
-                </Picker>
-                <br/>
-                <Picker selectedValue = {this.state.money} onValueChange = {(money) => this.setState({ money })}>
-                    <Picker.Item label = "Does the Money Raised Stay Within the FMWB Region?" value = {null} />
-                    <Picker.Item label = "Yes" value = "Yes" />
-                    <Picker.Item label = "No" value = "No" />
-                </Picker>
-                <br/>
-                <Picker selectedValue = {this.state.hear} onValueChange = {(hear) => this.setState({ hear })}>
-                    <Picker.Item label = "How Did You Hear About Us?" value = {null} />
-                    <Picker.Item label = "Word Of Mouth" value = "Word Of Mouth" />
-                    <Picker.Item label = "Social Media" value = "Social Media" />
-                    <Picker.Item label = "Email" value = "Email" />
-                    <Picker.Item label = "Browsing On The Web" value = "Browsing On The Web" />
-                </Picker>
+                <TextInput
+                    placeholder="What Is Your Main Purpose?"
+                    onChangeText={(cause) => this.setState({ cause })}
+                />
+ 
+                <TextInput
+                    placeholder="Do You Serve Out Of The FMWB Region?"
+                    onChangeText={(service) => this.setState({ service })}
+                />
+                <TextInput
+                    placeholder="Will The Donations Be Used In FMWB?"
+                    onChangeText={(money) => this.setState({ money })}
+                />
+                <TextInput
+                    placeholder="How Did You Hear About Us?"
+                    onChangeText={(hear) => this.setState({ hear })}
+                />
                 <Button
                     onPress={() => this.onSignUp()}
                     title="Sign Up"

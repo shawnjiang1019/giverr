@@ -9,18 +9,9 @@ import { fetchUser } from '../redux/actions/index'
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 import { documentId, QuerySnapshot } from 'firebase/firestore';
+import Background from './components/Background2'
 
 
-const DATA = [
-  { id: 1, text: 'Project Name #1', uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png' },
-  { id: 2, text: 'Project Name #2', uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg' },
-  { id: 3, text: 'Project Name #3', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg' },
-  { id: 4, text: 'Project Name #4', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg' },
-  { id: 5, text: 'Project Name #5', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg' },
-  { id: 6, text: 'Project Name #6', uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg' },
-  { id: 7, text: 'Project Name #7', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg' },
-  { id: 8, text: 'Project Name #8', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg' },
-];
 
 
 const posts = []
@@ -31,7 +22,8 @@ export class Matches extends Component {
   renderCard(item) {
     
     return (
-      <Card>
+      <Background>
+      <Card style ={{paddingTop: 1}}>
           <Text style = {{marginBottom : 10, paddingBottom: 10, fontSize: 20, fontWeight: "bold", textAlign: "center"} }>
           {item.title}
 
@@ -53,16 +45,92 @@ export class Matches extends Component {
           onPress={ ()=>{ Linking.openURL(item.website)}}
         />
       </Card>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      </Background>
       );
   }
 
   renderNoMoreCards() {
     return (
-      <Card title="All Done!!">
-        <Text style = {{marginBottom : 10}}>
+      <Background> 
+        <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>     
+        <Text style = {{marginBottom : 10, textAlign: 'center', alignItems: 'center', fontSize: '30', fontWeight: '700', color: 'white'}}>
           You're All Caught Up !!
         </Text>
-      </Card>
+        <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      <Text></Text>
+      </Background>
       );
   }
 
@@ -82,6 +150,7 @@ export class Matches extends Component {
     })
     
     return (
+      <Background>
       <View style={styles.container}>
         <Deck 
             data = {posts}
@@ -91,13 +160,16 @@ export class Matches extends Component {
         
         
       </View>
+      </Background>
+      
     );
   }
+  
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#00314D',
     marginTop: 20,
   },
 });

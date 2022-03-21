@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, Picker, ScrollView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, TouchableOpacity } from 'react-native'
@@ -8,13 +8,14 @@ import Background from './components/Background';
 import Logo from '../components/components/Logo'
 import Header from '../components/components/Header'
 import TextInput from '../components/components/TextInput'
-//import BackButton from '../components/BackButton'
+import BackButton from './components/BackButton'
 import { theme } from '../components/core/theme'
 import Button from './components/Button';
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 import DropDownPicker from 'react-native-dropdown-picker';
 import { user } from '../redux/reducers/user';
+
 
 
 
@@ -59,6 +60,7 @@ export class AddPostScreen extends Component {
 
     render() {
         return (
+            
             <Background>
             <Logo />
                 <Header>Create Post</Header>
@@ -82,7 +84,7 @@ export class AddPostScreen extends Component {
                 />
 
                 <Button
-                    onPress={() => this.onSubmitPost()}
+                    onPress={() => {this.onSubmitPost(); this.props.navigation.navigate('My Liked Posts');}}
                     title="Create Post"
                     mode="contained"
                 > Create </Button>

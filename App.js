@@ -13,6 +13,7 @@ import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { registerRootComponent } from 'expo';
 
@@ -21,12 +22,11 @@ import Toast from 'react-native-toast-message';
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={MatchesScreen} options = {{ headerShown: false}} />
-      <Tab.Screen name="Search" component={SearchScreen} options = {{ headerShown: false}} />
-      <Tab.Screen name="AddPostScreen" component={AddPostScreenScreen} options = {{ headerShown: false}}/>
-      <Tab.Screen name="Profile" component={ProfileScreen} options = {{ headerShown: false}}/>
-      <Tab.Screen name="MatchesPage" component={MatchesPageScreen} options = {{ headerShown: false}}/>
+    <Tab.Navigator tabBarOptions={{activeBackgroundColor: 'white', inactiveBackgroundColor: 'white', inactiveTintColor: "black", activeTintColor: "orange"}}>
+      <Tab.Screen name="Home" component={MatchesScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="home" color={color} size={size} />)}} />
+      <Tab.Screen name="Create A Post" component={AddPostScreenScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="plus" color={color} size={size} />)}}/>
+      <Tab.Screen name="My Profile" component={ProfileScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="account" color={color} size={size} />)}}/>
+      <Tab.Screen name="My Liked Posts" component={MatchesPageScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="heart" color={color} size={size} />)}}/>
       
       
       

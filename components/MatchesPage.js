@@ -12,9 +12,13 @@ import {
 import _ from "lodash";
 import { ListItem, SearchBar, Avatar, Button, Card } from "react-native-elements";
 import { getUsers, contains } from "./assets/data";
+<<<<<<< Updated upstream
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 import { documentId, QuerySnapshot } from 'firebase/firestore';
+=======
+import Background from './components/Background2'
+>>>>>>> Stashed changes
 
 const DATA = [
   { id: 1, text: 'Project Name #1', uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png' },
@@ -127,12 +131,13 @@ class MatchesPage extends Component {
 
     
     return (
+      <Background>
       <SafeAreaView>
         <StatusBar style="light-content" />
         <FlatList
           data={postData}
           renderItem={({ item }) => (
-            <Card>
+            <Card styles={{backgroundColor: "#00314D"}}>
           <Text style = {{marginBottom : 10, paddingBottom: 10, fontSize: 20, fontWeight: "bold", textAlign: "center"} }>
           {item.title}
 
@@ -157,6 +162,7 @@ class MatchesPage extends Component {
           ListFooterComponent={this.renderFooter}
         />
       </SafeAreaView>
+      </Background>
     );
   }
 }

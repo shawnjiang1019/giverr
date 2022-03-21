@@ -50,19 +50,19 @@ export class RegisterUser extends Component {
                 <Logo />
                 <Header>Create Account</Header>
                 <TextInput
-                    placeholder="name"
+                    placeholder="Name"
                     onChangeText={(name) => this.setState({ name })}
                 />
                 <TextInput
-                    placeholder="email"
+                    placeholder="Email"
                     onChangeText={(email) => this.setState({ email })}
                 />
                 <TextInput
-                    placeholder="phone number"
+                    placeholder="Phone Number"
                     onChangeText={(phone) => this.setState({ phone })}
                 />
                 <TextInput
-                    placeholder="password"
+                    placeholder="Password"
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({ password })}
                 />
