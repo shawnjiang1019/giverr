@@ -18,6 +18,7 @@ export class Register extends Component {
         super(props);
 
         this.state = {
+            isOrg: true,
             email: '',
             password: '',
             name: '',
@@ -30,14 +31,15 @@ export class Register extends Component {
             money: '',
             hear: '',
             location: '',
-            Logo_Link
+            Logo_Link,
+            
         }
 
         this.onSignUp = this.onSignUp.bind(this)
     }
 
     onSignUp() {
-        const { email, password, name, phone, website, address, cra, cause, location, service, Logo_Link, money, hear, } = this.state;
+        const { email, password, name, phone, website, address, cra, cause, location, service, Logo_Link, money, hear, isOrg} = this.state;
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((result) =>{
             firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).set({
@@ -53,7 +55,8 @@ export class Register extends Component {
                 money, 
                 hear,
                 location,
-                Logo_Link
+                Logo_Link,
+                isOrg,
             })
             console.log(result)
         })        
@@ -103,6 +106,13 @@ export class Register extends Component {
                     placeholder="CRA number"
                     onChangeText={(cra) => this.setState({ cra })}
                 />
+
+                <TextInput
+                    placeholder="Is this an ORGANIZATION account? type true if yes, false if not"
+                    onChangeText={(isOrg) => this.setState({ isOrg })}
+                />
+
+                
 
                 <Picker selectedValue = {this.state.cause} onValueChange = {(cause) => this.setState({ cause })}>
                     <Picker.Item label = "Which Cause Do You Fall Under?" value = {null} />

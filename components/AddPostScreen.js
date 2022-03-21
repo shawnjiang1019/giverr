@@ -51,13 +51,26 @@ export class AddPostScreen extends Component {
             time: time,
             website: website,
             user: firebase.auth().currentUser.uid
+        })
 
-
+        firebase
+        .firestore()
+        .collection('users')
+        .doc(firebase.auth().currentUser.uid)
+        .collection('myPosts')
+        .add({
+            post: post,
+            title: title,
+            time: time,
+            website: website,
+             
 
         })
     }
 
     render() {
+
+        
         return (
             <Background>
             <Logo />

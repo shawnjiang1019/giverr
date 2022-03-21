@@ -32,7 +32,7 @@ const DATA = [
 
 const theseposts = []
 
-export class MatchesPage extends Component {
+export class MyPost extends Component {
   constructor(props) {
     super(props);
 
@@ -123,7 +123,7 @@ export class MatchesPage extends Component {
   render() {
     
     
-    firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('likedPosts').get().then(querySnapshot => {
+    firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('myPosts').get().then(querySnapshot => {
       console.log('Total posts: ', querySnapshot.size);
       querySnapshot.forEach(documentSnapshot => {
         console.log('Liked Posts for reall this time : ', documentSnapshot.data());
@@ -146,7 +146,7 @@ export class MatchesPage extends Component {
       <SafeAreaView>
         <StatusBar style="light-content" />
         <FlatList
-          data={array}
+          data={theseposts}
           renderItem={({ item }) => (
             <Card>
           <Text style = {{marginBottom : 10, paddingBottom: 10, fontSize: 20, fontWeight: "bold", textAlign: "center"} }>
@@ -177,4 +177,4 @@ export class MatchesPage extends Component {
   }
 }
 
-export default MatchesPage;
+export default MyPost;
