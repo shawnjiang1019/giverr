@@ -38,7 +38,7 @@ export class RegisterUser extends Component {
                 email,
                 password,
                 phone,
-                isOrg: false
+                isOrg: "false"
             })
             console.log(result)
         })        

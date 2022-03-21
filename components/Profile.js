@@ -52,7 +52,7 @@ export class Profile extends Component {
               
               <Text style={styles.info}>UX Designer / Mobile developer</Text>
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
-              <Text style={styles.name}>Location: {currentUser.location}</Text>
+              <Text style={styles.name}>Location: {currentUser.name}</Text>
               
 
               

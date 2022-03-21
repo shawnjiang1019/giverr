@@ -15,7 +15,9 @@ import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 import DropDownPicker from 'react-native-dropdown-picker';
 import { user } from '../redux/reducers/user';
-
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchUser } from '../redux/actions/index'
 
 
 
@@ -30,16 +32,22 @@ export class AddPostScreen extends Component {
             title: '',
             time: '',
             website: '',
-            user:''
+            user:'',
+            isOrg:'',
+            imageLink: ''
         }
 
         this.onSubmitPost = this.onSubmitPost.bind(this)
 
     }
 
+    componentDidMount(){
+        this.props.fetchUser();
+      }
+
 
     onSubmitPost(){
-        const {post, title, time, website, user } = this.state;
+        const {post, title, time, website, user, imageLink } = this.state;
         
         firebase
         .firestore()
@@ -50,7 +58,8 @@ export class AddPostScreen extends Component {
             title: title,
             time: time,
             website: website,
-            user: firebase.auth().currentUser.uid
+            user: firebase.auth().currentUser.uid,
+            imageLink: imageLink
         })
 
         firebase
@@ -63,15 +72,23 @@ export class AddPostScreen extends Component {
             title: title,
             time: time,
             website: website,
-             
+            imageLink: imageLink
 
         })
     }
 
+    
     render() {
 
-        
-        return (
+        const { currentUser } = this.props;
+
+        if (firebase.auth().currentUser.isOrg === "false"){
+            return(
+                <View><Text>Create an organization account to post</Text></View>
+            )
+        }
+        else{
+            return (
             <Background>
             <Logo />
                 <Header>Create Post</Header>
@@ -94,6 +111,11 @@ export class AddPostScreen extends Component {
                     onChangeText={(website) => this.setState({ website })}
                 />
 
+<TextInput
+                    placeholder="imageLink"
+                    onChangeText={(imageLink) => this.setState({ imageLink })}
+                />
+
                 <Button
                     onPress={() => this.onSubmitPost()}
                     title="Create Post"
@@ -103,9 +125,16 @@ export class AddPostScreen extends Component {
             
         </Background>
         )
+        }
+        
         
     }
 
 }
 
-export default AddPostScreen
+const mapStateToProps = (store) => ({
+    currentUser: store.userState.currentUser
+})
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchProps)(AddPostScreen); 

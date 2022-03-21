@@ -155,7 +155,7 @@ export class MyPost extends Component {
         </Text>
 
         <Image 
-                source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png'}} 
+                source={{uri: item.uri}} 
                 style={{paddingRight: 10, height: 300 }} 
             />
         <Text style = {{marginBottom : 10, paddingTop: 10}}>
@@ -166,6 +166,7 @@ export class MyPost extends Component {
           
           backgroundColor="#03A9F4"
           title="Donate"
+          onPress={ ()=>{ Linking.openURL(item.website)}}
         />
       </Card>
           )}
