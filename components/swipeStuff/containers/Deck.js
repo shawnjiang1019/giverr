@@ -187,7 +187,7 @@ class Deck extends Component {
 		return (
 			<View>
 				{this.renderCards()}
-                <Text>{firebase.auth().currentUser.uid}</Text>
+                
 			</View>
 		); 
 	}
