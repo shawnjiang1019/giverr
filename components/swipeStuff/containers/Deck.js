@@ -19,7 +19,11 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchUser } from 'C:/Users/shawn/giverr/redux/actions/index'
 
+
+export const array = []
+export const dbArray = []
 class Deck extends Component {
+	
 	static defaultProps = {
 		onSwipeLeft: (item) => {
             firebase
@@ -29,6 +33,8 @@ class Deck extends Component {
             .update({
                 likedPosts: firebase.firestore.FieldValue.arrayUnion(item)
             })
+			array.push(item)
+			console.log(array)
         },
         
 		onSwipeRight: () => {}
@@ -76,6 +82,21 @@ class Deck extends Component {
               console.log('Post titles: ', posts[0].title);
             });
           })
+		  firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('likedPosts').get().then(querySnapshot => {
+			console.log('Total posts: ', querySnapshot.size);
+			querySnapshot.forEach(documentSnapshot => {
+			  console.log('Liked Posts for reall this time : ', documentSnapshot.data());
+			  
+			  theseposts.push({
+				...documentSnapshot.data(),
+				key: documentSnapshot.id
+			  })
+	  
+			  
+	  
+			  
+			});
+		  })
     }
     
 
@@ -186,3 +207,5 @@ const mapStateToProps = (store) => ({
   const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
   
   export default connect(mapStateToProps, mapDispatchProps)(Deck); 
+
+  

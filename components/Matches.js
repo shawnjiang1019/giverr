@@ -148,6 +148,8 @@ export class Matches extends Component {
         console.log('Post titles: ', posts[0].title);
       });
     })
+
+    
     
     return (
       <Background>

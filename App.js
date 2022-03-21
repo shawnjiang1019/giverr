@@ -7,7 +7,9 @@ import { getApps, initializeApp } from "firebase/app";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchUser } from './redux/actions/index';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
@@ -19,6 +21,7 @@ import { registerRootComponent } from 'expo';
 
 import Toast from 'react-native-toast-message';
 
+import "firebase/firestore";
 
 function MyTabs() {
   return (
@@ -27,7 +30,7 @@ function MyTabs() {
       <Tab.Screen name="Create A Post" component={AddPostScreenScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="plus" color={color} size={size} />)}}/>
       <Tab.Screen name="My Profile" component={ProfileScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="account" color={color} size={size} />)}}/>
       <Tab.Screen name="My Liked Posts" component={MatchesPageScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="heart" color={color} size={size} />)}}/>
-      
+      <Tab.Screen name="My Posts" component={MyPostScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="book" color={color} size={size} />)}}/>
       
       
 
@@ -77,11 +80,22 @@ import RegisterUserScreen, {RegisterUser} from "./components/auth/RegisterUser"
 import RegisterOrgScreen, {RegisterOrg} from "./components/auth/RegisterOrg"
 import MatchesPageScreen, {MatchesPage} from "./components/MatchesPage"
 import MatchesScreen, { Matches } from "./components/Matches"
+import MyPostScreen, {MyPost} from './components/MyPost';
+import { DocumentSnapshot } from 'firebase/firestore';
 //import CreatePostScreen, {1CreatePost} from './components/auth/CreatePost';
+
+
+
+
+const loggedIn = false
+const loaded = true
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 export class App extends Component {
+  
+  
+
   constructor(props){
     super(props);
     this.state = {
@@ -106,16 +120,23 @@ export class App extends Component {
   }
   render() {
     const { loggedIn, loaded } = this.state;
+    
+  
+        
     if(!loaded){
+      
       return(
+        <Provider store={store}>
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <Text> Loading </Text>
         </View>
+        </Provider>
       )
     }
 
     if (!loggedIn) {
       return (
+        <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName = "Landing">
             <Stack.Screen name = "Landing" component = {LandingScreen} options = {{ headerShown: false}}/>
@@ -128,29 +149,42 @@ export class App extends Component {
             <Stack.Screen name = "RegisterOrg" component = {RegisterOrgScreen} options = {{ headerShown: false}}/>
           </Stack.Navigator>
         </NavigationContainer>
-        
+        </Provider>
       );
+    }
+    else{
+      if (true){
+        return(
+          <Provider store={store}>
+            
+            <NavigationContainer>
+              <MyTabs />
+              <Toast ref={(ref) => Toast.setRef(ref)} />
+            </NavigationContainer>
+          </Provider>
+            
+          
+            
+          )
+      }
+      
+      
     }
 
 
-    return(
-      <Provider store={store}>
-        
-        <NavigationContainer>
-          <MyTabs />
-          <Toast ref={(ref) => Toast.setRef(ref)} />
-        </NavigationContainer>
-      </Provider>
-        
-      
-        
-      )
+    
     
   }
 }
 registerRootComponent(App);
 
-export default App
+
+const mapStateToProps = (store) => ({
+  currentUser: store.userState.currentUser
+})
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser}, dispatch)
+
+export default App; 
 
 
 /*
