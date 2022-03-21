@@ -17,7 +17,7 @@ const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH
 const SWIPE_OUT_DURATION = 250
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchUser } from 'C:/Users/shawn/giverr/redux/actions/index'
+import { fetchUser } from '../../../redux/actions/index'
 
 
 export const array = []
