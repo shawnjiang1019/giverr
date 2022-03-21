@@ -19,18 +19,17 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { registerRootComponent } from 'expo';
 
 import Toast from 'react-native-toast-message';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import "firebase/firestore";
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={MatchesScreen} options = {{ headerShown: true}} />
-      <Tab.Screen name="Search" component={SearchScreen} options = {{ headerShown: true}} />
-      <Tab.Screen name="AddPostScreen" component={AddPostScreenScreen} options = {{ headerShown: true}}/>
-      <Tab.Screen name="Profile" component={ProfileScreen} options = {{ headerShown: true}}/>
-      <Tab.Screen name="MatchesPage" component={MatchesPageScreen} options = {{ headerShown: true}}/>
-      <Tab.Screen name="My Posts" component={MyPostScreen} options = {{ headerShown: true}}/>
+    <Tab.Navigator tabBarOptions={{activeBackgroundColor: 'white', inactiveBackgroundColor: 'white', inactiveTintColor: "black", activeTintColor: "orange"}}>
+      <Tab.Screen name="Home" component={MatchesScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="home" color={color} size={size} />)}} />
+      <Tab.Screen name="Create A Post" component={AddPostScreenScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="plus" color={color} size={size} />)}}/>
+      <Tab.Screen name="My Profile" component={ProfileScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="account" color={color} size={size} />)}}/>
+      <Tab.Screen name="My Liked Posts" component={MatchesPageScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="heart" color={color} size={size} />)}}/>
+      <Tab.Screen name="My Posts" component={MyPostScreen} options = {{ headerShown: true, tabBarIcon:({color, size}) => (<MaterialCommunityIcons name="book" color={color} size={size} />)}}/>
       
       
 

@@ -13,6 +13,8 @@ import { fetchUser } from '../redux/actions/index'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
+import Background from './components/Background';
+import Button from './components/Button'
 
 
 
@@ -43,29 +45,33 @@ export class Profile extends Component {
     const { currentUser } = this.props;
     
     return (
-      
+      <Background>
       <View style={styles.container}>
           <View style={styles.header}></View>
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
+            <Text style={styles.name}>{currentUser.name}</Text>
+            <Text></Text>
+            <Text></Text>
+            <Text style={styles.info}> Email: {currentUser.email}</Text>
+              <Text style={styles.description}>Phone Number: {currentUser.phone}</Text>
+              <Text></Text>
+            <Text></Text>
+            <Text></Text>
+
               
-              <Text style={styles.info}>UX Designer / Mobile developer</Text>
-              <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
-              <Text style={styles.name}>Location: {currentUser.name}</Text>
               
 
               
-              <TouchableOpacity style={styles.buttonContainer} onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained">
-              <Text style={styles.name}>{currentUser.name}</Text>
-                
-              </TouchableOpacity>
-              <Text >{currentUser.name}</Text>
-              <TouchableOpacity><Text style={styles.name}>{currentUser.name}</Text></TouchableOpacity>
+  
+              <Button onPress ={() => firebase.auth().signOut()} title="SignOut" mode="contained" style={styles.name}>Sign Out</Button>
+              
               
             </View>
         </View>
       </View>
+      </Background>
     );
   }
 }
@@ -82,6 +88,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#00314D",
     height:200,
   },
+  heading: {
+    fontSize:25,
+    color:"orange",
+    fontWeight:'500',
+    textAlign: 'left'
+  },
   avatar: {
     width: 130,
     height: 130,
@@ -94,31 +106,26 @@ const styles = StyleSheet.create({
     marginTop:130
   },
   name:{
-    fontSize:22,
+    fontSize:30,
     color:"#FFFFFF",
-    fontWeight:'600',
+    fontWeight:'700',
+    textAlign: 'center'
   },
   body:{
-    marginTop:40,
+    marginTop:65,
   },
   bodyContent: {
     flex: 1,
-    alignItems: 'center',
     padding:30,
   },
-  name:{
-    fontSize:28,
-    color: "#696969",
-    fontWeight: "600"
-  },
   info:{
-    fontSize:16,
+    fontSize:20,
     color: "#00BFFF",
     marginTop:10
   },
   description:{
     fontSize:16,
-    color: "#696969",
+    color: "#00BFFF",
     marginTop:10,
     textAlign: 'center'
   },

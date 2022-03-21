@@ -9,6 +9,7 @@ import { fetchUser } from '../redux/actions/index'
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
 import { documentId, QuerySnapshot } from 'firebase/firestore';
+import Background from './components/Background2';
 
 
 const DATA = [
@@ -31,6 +32,7 @@ export class Matches extends Component {
   renderCard(item) {
     
     return (
+      <Background>
       <Card>
           <Text style = {{marginBottom : 10, paddingBottom: 10, fontSize: 20, fontWeight: "bold", textAlign: "center"} }>
           {item.title}
@@ -53,6 +55,7 @@ export class Matches extends Component {
           onPress={ ()=>{ Linking.openURL(item.website)}}
         />
       </Card>
+      </Background>
       );
   }
 

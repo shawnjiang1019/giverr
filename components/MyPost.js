@@ -17,6 +17,7 @@ import "firebase/firestore";
 import { documentId, QuerySnapshot } from 'firebase/firestore';
 import { likedPosts } from "./Matches";
 import { array } from "./swipeStuff/containers/Deck"
+import Background from "./components/Background2";
 
 const DATA = [
   { id: 1, text: 'Project Name #1', uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png' },
@@ -143,8 +144,9 @@ export class MyPost extends Component {
 
     
     return (
+      
       <SafeAreaView>
-        <StatusBar style="light-content" />
+     <Background>
         <FlatList
           data={theseposts}
           renderItem={({ item }) => (
@@ -173,6 +175,7 @@ export class MyPost extends Component {
           keyExtractor={(item) => item.id}
           ListFooterComponent={this.renderFooter}
         />
+        </Background>
       </SafeAreaView>
     );
   }

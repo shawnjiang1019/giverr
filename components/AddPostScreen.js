@@ -93,28 +93,26 @@ export class AddPostScreen extends Component {
             <Logo />
                 <Header>Create Post</Header>
                 <TextInput
-                    placeholder="post"
-                    onChangeText={(post) => this.setState({ post })}
-                />
-                <TextInput
-                    placeholder="title"
+                    placeholder="Title"
                     onChangeText={(title) => this.setState({ title })}
-                />
-                <TextInput
-                    placeholder="time"
-                    secureTextEntry={false}
-                    onChangeText={(time) => this.setState({ time })}
                 />
 
                 <TextInput
-                    placeholder="website"
+                    placeholder="Caption"
+                    onChangeText={(post) => this.setState({ post })}
+                />
+                
+                <TextInput
+                    placeholder="Input Image URL"
+                    onChangeText={(imageLink) => this.setState({ imageLink })}
+                />
+
+                <TextInput
+                    placeholder="Input SimplyK URL"
                     onChangeText={(website) => this.setState({ website })}
                 />
 
-<TextInput
-                    placeholder="imageLink"
-                    onChangeText={(imageLink) => this.setState({ imageLink })}
-                />
+                
 
                 <Button
                     onPress={() => this.onSubmitPost()}

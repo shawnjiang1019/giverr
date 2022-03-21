@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#00314D"
   },
   container: {
+    backgroundColor: '#00314D',
 
   },
 })

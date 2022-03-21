@@ -51,21 +51,14 @@ export class Login extends Component {
 
                 <Header>User Login</Header>
                 <TextInput
-                    placeholder="email"
+                    placeholder="Email"
                     onChangeText={(email) => this.setState({ email })}
                 />
                 <TextInput
-                    placeholder="password"
+                    placeholder="Password"
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({ password })}
                 />
-                <View style={styles.forgotPassword}>
-                    <TouchableOpacity onPress={() => navigation.navigate('ResetPasswordScreen')}>
-                
-                        <Text style={styles.forgot}>Forgot your password?</Text>
-
-                    </TouchableOpacity>
-                </View>
 
                 <Button onPress={() => this.onSignUp()} title="Login" mode="contained"> Login </Button>
 
