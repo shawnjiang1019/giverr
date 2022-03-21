@@ -159,7 +159,7 @@ export class MyPost extends Component {
                 style={{paddingRight: 10, height: 300 }} 
             />
         <Text style = {{marginBottom : 10, paddingTop: 10}}>
-          I can customize
+          {item.post}
         </Text>
 
         <Button
