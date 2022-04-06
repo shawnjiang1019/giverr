@@ -90,7 +90,7 @@ export class AddPostScreen extends Component {
         else{
             return (
             <Background>
-            <Logo />
+            
                 <Header>Create Post</Header>
                 <TextInput
                     placeholder="Title"
@@ -115,7 +115,9 @@ export class AddPostScreen extends Component {
                 
 
                 <Button
-                    onPress={() => this.onSubmitPost()}
+                    onPress={() =>{ this.onSubmitPost();
+                    this.props.navigation.navigate('My Posts');
+                    }}
                     title="Create Post"
                     mode="contained"
                 > Create </Button>

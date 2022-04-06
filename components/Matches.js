@@ -55,17 +55,74 @@ export class Matches extends Component {
           onPress={ ()=>{ Linking.openURL(item.website)}}
         />
       </Card>
+      <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
       </Background>
       );
   }
 
   renderNoMoreCards() {
     return (
-      <Card title="All Done!!">
+      <Background>
+<        Card title="All Done!!">
         <Text style = {{marginBottom : 10}}>
           You're All Caught Up !!
+
         </Text>
+        
       </Card>
+      <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+      </Background>
+      
       );
   }
 
@@ -87,7 +144,7 @@ export class Matches extends Component {
     
     
     return (
-      <View style={styles.container}>
+      <Background>
         <Deck 
             data = {posts}
             renderCard = {this.renderCard} 
@@ -95,7 +152,8 @@ export class Matches extends Component {
         />
         
         
-      </View>
+        
+      </Background>
     );
   }
 }

@@ -7,10 +7,11 @@ import {
   ActivityIndicator,
   SafeAreaView,
   StatusBar,
-  Image
+  Image,
+  Linking
 } from "react-native";
 import _ from "lodash";
-import { ListItem, SearchBar, Avatar, Button, Card } from "react-native-elements";
+import { ListItem, SearchBar, Avatar, Button, Card} from "react-native-elements";
 import { getUsers, contains } from "./assets/data";
 import firebase from 'firebase/compat/app'
 import "firebase/firestore";
@@ -41,16 +42,51 @@ export class MyPost extends Component {
       loading: false,
       data: [],
       error: null,
+      random: 'some'
     };
   }
 
-  componentDidUpdate(){
+  shouldcomponentDidUpdate(){
+    
+    firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('myPosts').get().then(querySnapshot => {
+      console.log('Total posts: ', querySnapshot.size);
+      querySnapshot.forEach(documentSnapshot => {
+        console.log('Liked Posts for reall this time : ', documentSnapshot.data());
+        
+        theseposts.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id
+        })
+
+        
+
+        
+      });
+    })
     
 
   }
 
   componentDidMount() {
+    
     this.makeRemoteRequest();
+    this.setState({random: 'new'})
+    
+    firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('myPosts').get().then(querySnapshot => {
+      console.log('Total posts: ', querySnapshot.size);
+      querySnapshot.forEach(documentSnapshot => {
+        console.log('Liked Posts for reall this time : ', documentSnapshot.data());
+        
+        theseposts.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id
+        })
+
+        
+
+        
+      });
+    })
   }
 
   makeRemoteRequest = _.debounce(() => {
@@ -139,6 +175,8 @@ export class MyPost extends Component {
         
       });
     })
+
+    this.componentDidUpdate
     
     
 
@@ -146,6 +184,26 @@ export class MyPost extends Component {
     return (
       
       <SafeAreaView>
+        <Button
+          
+          backgroundColor="#03A9F4"
+          title="Refresh"
+          onPress={ ()=>{ firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).collection('myPosts').get().then(querySnapshot => {
+            console.log('Total posts: ', querySnapshot.size);
+            querySnapshot.forEach(documentSnapshot => {
+              console.log('Liked Posts for reall this time : ', documentSnapshot.data());
+              
+              theseposts.push({
+                ...documentSnapshot.data(),
+                key: documentSnapshot.id
+              })
+      
+              
+      
+              
+            });
+          })}}
+        />
      <Background>
         <FlatList
           data={theseposts}
@@ -157,7 +215,7 @@ export class MyPost extends Component {
         </Text>
 
         <Image 
-                source={{uri: item.uri}} 
+                source={{uri: item.imageLink}} 
                 style={{paddingRight: 10, height: 300 }} 
             />
         <Text style = {{marginBottom : 10, paddingTop: 10}}>
