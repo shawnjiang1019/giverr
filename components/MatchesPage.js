@@ -7,7 +7,8 @@ import {
   ActivityIndicator,
   SafeAreaView,
   StatusBar,
-  Image
+  Image,
+  Linking
 } from "react-native";
 import _ from "lodash";
 import { ListItem, SearchBar, Avatar, Button, Card } from "react-native-elements";
@@ -157,7 +158,7 @@ export class MatchesPage extends Component {
         </Text>
 
         <Image 
-                source={{uri: item.uri}} 
+                source={{uri: item.imageLink}} 
                 style={{paddingRight: 10, height: 300 }} 
             />
         <Text style = {{marginBottom : 10, paddingTop: 10}}>

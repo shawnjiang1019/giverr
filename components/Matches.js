@@ -41,7 +41,7 @@ export class Matches extends Component {
 
 
         <Image 
-                source={{uri: item.uri}} 
+                source={{uri: item.imageLink}} 
                 style={{paddingRight: 10, height: 300 }} 
             />
         <Text style = {{marginBottom : 10, paddingTop: 10}}>

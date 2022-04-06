@@ -144,7 +144,7 @@ export class MyPost extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingBottom: 30,
           borderTopWidth: 1,
           borderColor: "#CED0CE",
         }}
@@ -182,8 +182,8 @@ export class MyPost extends Component {
 
     
     return (
+      <Background>
       
-      <SafeAreaView>
         <Button
           
           backgroundColor="#03A9F4"
@@ -204,7 +204,8 @@ export class MyPost extends Component {
             });
           })}}
         />
-     <Background>
+     
+     <SafeAreaView>
         <FlatList
           data={theseposts}
           renderItem={({ item }) => (
@@ -228,13 +229,17 @@ export class MyPost extends Component {
           title="Donate"
           onPress={ ()=>{ Linking.openURL(item.website)}}
         />
+        
       </Card>
           )}
           keyExtractor={(item) => item.id}
           ListFooterComponent={this.renderFooter}
+          
         />
+
+        </SafeAreaView>
         </Background>
-      </SafeAreaView>
+      
     );
   }
 }
